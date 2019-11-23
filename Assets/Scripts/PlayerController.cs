@@ -12,33 +12,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Controls controls;
     Vector2 movementInput;
 
-    private void OnEnable()
-    {
-        controls = new Controls();
-        controls.PlayerControls.Move.performed += ctx => {
-            Debug.Log("INPUT RECEIVED");
-            movementInput = ctx.ReadValue<Vector2>();
-        };
-        controls.PlayerControls.Fire.performed += ctx =>
-        {
-            Debug.Log("Fire");
-        };
-        controls.Enable();
-    }
-
-    private void OnDisable()
-    {
-        controls.Disable();
-    }
-
-    private void OnMove()
+    private void OnMove(InputValue value)
     {
         Debug.Log("Moving");
-    }
-
-    private void handleMove()
-    {
-
+        movementInput = value.Get<Vector2>();
     }
 
     // Start is called before the first frame update
