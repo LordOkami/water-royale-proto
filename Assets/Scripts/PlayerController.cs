@@ -6,6 +6,10 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     public float velocity;
+    public float rotationForce;
+    public Transform thrust;
+
+    private Vector2 thrustPosition;
 
     private Rigidbody2D rigidBody;
 
@@ -22,6 +26,8 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rigidBody = transform.GetComponent<Rigidbody2D>();
+        thrustPosition = thrust.position;
+        // thrustPosition = 
     }
 
     // Update is called once per frame
@@ -32,6 +38,8 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rigidBody.AddForce(movementInput * velocity);
+        Vector2 dirVector = transform.position - thrust.position;
+        rigidBody.AddForce(dirVector.normalized * velocity * movementInput.y);
+        rigidBody.AddTorque(-movementInput.x * rotationForce);
     }
 }
