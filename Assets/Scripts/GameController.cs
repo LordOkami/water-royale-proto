@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class GameController : MonoBehaviour
 {
     public GameObject camera;
 
     public FollowBehaviour follow;
+
+    private int totalPlayers = 0;
 
 
     private static List<Transform> players = new List<Transform>();
@@ -25,9 +28,12 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (follow.player == null && players.Count > 0)
+        if (players.Count != totalPlayers)
         {
-            follow.player = players[0];
+            int nextPlayer = Random.Range(0, players.Count);
+            follow.player = players[nextPlayer];
+
+            totalPlayers = players.Count;
         }
     }
 }
