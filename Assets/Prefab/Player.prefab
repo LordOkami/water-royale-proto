@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 1864252385606713156}
   - component: {fileID: 1864252385606713155}
   - component: {fileID: 1864252385606713157}
-  - component: {fileID: 7902198102030700057}
   - component: {fileID: 5295533200584949589}
   - component: {fileID: 2189466770118004989}
+  - component: {fileID: 735082070709790906}
+  - component: {fileID: 5148842400814590186}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -30,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 1864252385606713154}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 1, z: 1}
+  m_LocalScale: {x: 0.15, y: 0.3, z: 1}
   m_Children:
   - {fileID: 2896517161985693576}
   m_Father: {fileID: 0}
@@ -128,7 +129,7 @@ MonoBehaviour:
     m_ActionName: UI/TrackedDeviceSelect
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Gamepad
-  m_DefaultActionMap: PlayerControls
+  m_DefaultActionMap: Rocket
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!212 &1864252385606713157
@@ -181,21 +182,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7902198102030700057
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1864252385606713154}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6acf244459348ef42a044768bab6d7f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  velocity: 10
-  rotationForce: 0.5
-  thrust: {fileID: 2896517161985693576}
 --- !u!50 &5295533200584949589
 Rigidbody2D:
   serializedVersion: 4
@@ -209,8 +195,8 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 1
+  m_LinearDrag: 1.5
+  m_AngularDrag: 5
   m_GravityScale: 0
   m_Material: {fileID: 6200000, guid: 2eff830d17fa4004589e92c879f3d1f7, type: 2}
   m_Interpolate: 0
@@ -245,6 +231,47 @@ PolygonCollider2D:
     - - {x: 0, y: 0.5}
       - {x: -0.4330127, y: -0.25000003}
       - {x: 0.43301272, y: -0.24999996}
+--- !u!114 &735082070709790906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1864252385606713154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ff67085ba57942e8b77bf78c7f048e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocity: 5
+  rotationForce: 0.1
+  thrust: {fileID: 2896517161985693576}
+--- !u!61 &5148842400814590186
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1864252385606713154}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.12761307}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 0.2, y: 0.2}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8606901, y: 0.74477386}
+  m_EdgeRadius: 0
 --- !u!1 &8522610613621740351
 GameObject:
   m_ObjectHideFlags: 0

@@ -755,6 +755,71 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Rocket",
+            "id": "d8481030-8b70-43f6-8acb-93f07f0caa9b",
+            "actions": [
+                {
+                    "name": "RocketRight",
+                    "type": "Value",
+                    "id": "06925ff6-c41e-4266-a69a-22db2e133ee9",
+                    "expectedControlType": "Analog",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "RocketLeft",
+                    "type": "Value",
+                    "id": "ba675cda-f0d5-4b9b-a176-be2f76394795",
+                    "expectedControlType": "Analog",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Reset",
+                    "type": "Value",
+                    "id": "b704349b-a28e-4944-a8c7-d9cf0dca15bf",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "2fe82222-4246-4fc2-b9e9-72d1cc694053",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RocketRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "64a90aeb-1eb3-4c38-aaab-485081e94167",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RocketLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "520f41d0-af81-4fb6-a371-d7426dff49f5",
+                    "path": "<DualShockGamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Reset",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [

@@ -768,6 +768,71 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Rocket"",
+            ""id"": ""d8481030-8b70-43f6-8acb-93f07f0caa9b"",
+            ""actions"": [
+                {
+                    ""name"": ""RocketRight"",
+                    ""type"": ""Value"",
+                    ""id"": ""06925ff6-c41e-4266-a69a-22db2e133ee9"",
+                    ""expectedControlType"": ""Analog"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""RocketLeft"",
+                    ""type"": ""Value"",
+                    ""id"": ""ba675cda-f0d5-4b9b-a176-be2f76394795"",
+                    ""expectedControlType"": ""Analog"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Reset"",
+                    ""type"": ""Value"",
+                    ""id"": ""b704349b-a28e-4944-a8c7-d9cf0dca15bf"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""2fe82222-4246-4fc2-b9e9-72d1cc694053"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RocketRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""64a90aeb-1eb3-4c38-aaab-485081e94167"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RocketLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""520f41d0-af81-4fb6-a371-d7426dff49f5"",
+                    ""path"": ""<DualShockGamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Reset"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -851,6 +916,11 @@ public class @Controls : IInputActionCollection, IDisposable
         m_UI_TrackedDevicePosition = m_UI.FindAction("TrackedDevicePosition", throwIfNotFound: true);
         m_UI_TrackedDeviceOrientation = m_UI.FindAction("TrackedDeviceOrientation", throwIfNotFound: true);
         m_UI_TrackedDeviceSelect = m_UI.FindAction("TrackedDeviceSelect", throwIfNotFound: true);
+        // Rocket
+        m_Rocket = asset.FindActionMap("Rocket", throwIfNotFound: true);
+        m_Rocket_RocketRight = m_Rocket.FindAction("RocketRight", throwIfNotFound: true);
+        m_Rocket_RocketLeft = m_Rocket.FindAction("RocketLeft", throwIfNotFound: true);
+        m_Rocket_Reset = m_Rocket.FindAction("Reset", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -1058,6 +1128,55 @@ public class @Controls : IInputActionCollection, IDisposable
         }
     }
     public UIActions @UI => new UIActions(this);
+
+    // Rocket
+    private readonly InputActionMap m_Rocket;
+    private IRocketActions m_RocketActionsCallbackInterface;
+    private readonly InputAction m_Rocket_RocketRight;
+    private readonly InputAction m_Rocket_RocketLeft;
+    private readonly InputAction m_Rocket_Reset;
+    public struct RocketActions
+    {
+        private @Controls m_Wrapper;
+        public RocketActions(@Controls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @RocketRight => m_Wrapper.m_Rocket_RocketRight;
+        public InputAction @RocketLeft => m_Wrapper.m_Rocket_RocketLeft;
+        public InputAction @Reset => m_Wrapper.m_Rocket_Reset;
+        public InputActionMap Get() { return m_Wrapper.m_Rocket; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(RocketActions set) { return set.Get(); }
+        public void SetCallbacks(IRocketActions instance)
+        {
+            if (m_Wrapper.m_RocketActionsCallbackInterface != null)
+            {
+                @RocketRight.started -= m_Wrapper.m_RocketActionsCallbackInterface.OnRocketRight;
+                @RocketRight.performed -= m_Wrapper.m_RocketActionsCallbackInterface.OnRocketRight;
+                @RocketRight.canceled -= m_Wrapper.m_RocketActionsCallbackInterface.OnRocketRight;
+                @RocketLeft.started -= m_Wrapper.m_RocketActionsCallbackInterface.OnRocketLeft;
+                @RocketLeft.performed -= m_Wrapper.m_RocketActionsCallbackInterface.OnRocketLeft;
+                @RocketLeft.canceled -= m_Wrapper.m_RocketActionsCallbackInterface.OnRocketLeft;
+                @Reset.started -= m_Wrapper.m_RocketActionsCallbackInterface.OnReset;
+                @Reset.performed -= m_Wrapper.m_RocketActionsCallbackInterface.OnReset;
+                @Reset.canceled -= m_Wrapper.m_RocketActionsCallbackInterface.OnReset;
+            }
+            m_Wrapper.m_RocketActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @RocketRight.started += instance.OnRocketRight;
+                @RocketRight.performed += instance.OnRocketRight;
+                @RocketRight.canceled += instance.OnRocketRight;
+                @RocketLeft.started += instance.OnRocketLeft;
+                @RocketLeft.performed += instance.OnRocketLeft;
+                @RocketLeft.canceled += instance.OnRocketLeft;
+                @Reset.started += instance.OnReset;
+                @Reset.performed += instance.OnReset;
+                @Reset.canceled += instance.OnReset;
+            }
+        }
+    }
+    public RocketActions @Rocket => new RocketActions(this);
     private int m_KeyboardMouseSchemeIndex = -1;
     public InputControlScheme KeyboardMouseScheme
     {
@@ -1122,5 +1241,11 @@ public class @Controls : IInputActionCollection, IDisposable
         void OnTrackedDevicePosition(InputAction.CallbackContext context);
         void OnTrackedDeviceOrientation(InputAction.CallbackContext context);
         void OnTrackedDeviceSelect(InputAction.CallbackContext context);
+    }
+    public interface IRocketActions
+    {
+        void OnRocketRight(InputAction.CallbackContext context);
+        void OnRocketLeft(InputAction.CallbackContext context);
+        void OnReset(InputAction.CallbackContext context);
     }
 }
