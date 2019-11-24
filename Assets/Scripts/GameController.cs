@@ -15,12 +15,18 @@ public class GameController : MonoBehaviour
     private int totalPlayers = 0;
 
 
-    private static List<Transform> players = new List<Transform>();
-    
+    private static List<GameObject> players = new List<GameObject>();
 
-    public static void RegisterPlayer(Transform t)
+
+    private Collider2D focusPlayerCollider;
+
+    private MonoBehaviour leaderBehaviour;
+
+    private GameObject focusedPlayer;
+
+    public static void RegisterPlayer(GameObject playerObject)
     {
-        players.Add(t);
+        players.Add(playerObject);
     }
 
     void Start()
@@ -29,6 +35,7 @@ public class GameController : MonoBehaviour
 
         followStar = focusStar.GetComponent<FollowBehaviour>();
 
+
     }
 
     // Update is called once per frame
@@ -36,16 +43,50 @@ public class GameController : MonoBehaviour
     {
         if (players.Count != totalPlayers)
         {
-            int nextPlayer = Random.Range(0, players.Count);
-            follow.player = players[nextPlayer];
-            followStar.player = players[nextPlayer];
-
+            GameObject nextPlayer = players[Random.Range(0, players.Count)];
+            updateFocusedPlayer(nextPlayer);
             totalPlayers = players.Count;
         }
     }
 
-    public static void setPlayerFocus()
+    private void updateFocusedPlayer(GameObject nextPlayer)
+    {
+        removeLeadership(focusedPlayer);
+
+        focusedPlayer = nextPlayer;
+        follow.player = focusedPlayer.transform;
+        followStar.player = focusedPlayer.transform;
+
+        focusPlayerCollider = focusedPlayer.GetComponent<Collider2D>();
+
+        RocketController rocketController = focusedPlayer.GetComponent<RocketController>();
+
+        addLeadership(focusedPlayer);
+    }
+
+    public void addLeadership(GameObject player)
     {
 
+        LeaderBehaviour pb = player.AddComponent<LeaderBehaviour>();
+
+        pb.gameController = this;
+
+    }
+
+    public void removeLeadership(GameObject player)
+    {
+        if (player != null)
+        {
+            Destroy(player.GetComponent<LeaderBehaviour>());
+        }
+    }
+
+    public void OnLeaderCollide(Collision2D collision)
+    {
+        GameObject newLeader = collision.otherRigidbody.gameObject;
+
+        updateFocusedPlayer(newLeader);
+
+        Debug.Log(collision);
     }
 }

@@ -19,7 +19,7 @@ public class RocketController : MonoBehaviour
 
     private void OnEnable()
     {
-        GameController.RegisterPlayer(transform);
+        GameController.RegisterPlayer(this.gameObject);
     }
 
     private void OnRocketRight(InputValue value)
@@ -59,8 +59,4 @@ public class RocketController : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        Debug.Log(collision);
-    }
 }
