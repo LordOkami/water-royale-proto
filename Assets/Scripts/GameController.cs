@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,10 +18,7 @@ public class GameController : MonoBehaviour
 
     private static List<GameObject> players = new List<GameObject>();
 
-
-    private Collider2D focusPlayerCollider;
-
-    private MonoBehaviour leaderBehaviour;
+    private double lastLeadershipChange;
 
     private GameObject focusedPlayer;
 
@@ -51,15 +49,20 @@ public class GameController : MonoBehaviour
 
     private void updateFocusedPlayer(GameObject nextPlayer)
     {
+        double now = (new System.TimeSpan(System.DateTime.Now.Ticks)).TotalMilliseconds;
+        if (focusedPlayer != null && now - lastLeadershipChange < 1000)
+        {
+            return;
+        }
+        Debug.Log("PASSING LEADER");
+
+        lastLeadershipChange = now;
+
         removeLeadership(focusedPlayer);
 
         focusedPlayer = nextPlayer;
         follow.player = focusedPlayer.transform;
         followStar.player = focusedPlayer.transform;
-
-        focusPlayerCollider = focusedPlayer.GetComponent<Collider2D>();
-
-        RocketController rocketController = focusedPlayer.GetComponent<RocketController>();
 
         addLeadership(focusedPlayer);
     }
@@ -67,8 +70,7 @@ public class GameController : MonoBehaviour
     public void addLeadership(GameObject player)
     {
 
-        LeaderBehaviour pb = player.AddComponent<LeaderBehaviour>();
-
+        LeaderBehaviour pb = player.AddComponent<LeaderBehaviour>() as LeaderBehaviour;
         pb.gameController = this;
 
     }
@@ -83,10 +85,6 @@ public class GameController : MonoBehaviour
 
     public void OnLeaderCollide(Collision2D collision)
     {
-        GameObject newLeader = collision.otherRigidbody.gameObject;
-
-        updateFocusedPlayer(newLeader);
-
-        Debug.Log(collision);
+        updateFocusedPlayer(collision.gameObject);
     }
 }

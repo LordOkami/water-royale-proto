@@ -34,9 +34,12 @@ public class RocketController : MonoBehaviour
     }
     private void OnReset()
     {
-        transform.position = new Vector2(0, 0);
-        transform.rotation = Quaternion.Euler(0,0,0);
-        rigidBody.velocity = new Vector2(0, 0);
+        if (rigidBody != null)
+        {
+            transform.position = new Vector2(0, 0);
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+            rigidBody.velocity = new Vector2(0, 0);
+        }
     }
 
 

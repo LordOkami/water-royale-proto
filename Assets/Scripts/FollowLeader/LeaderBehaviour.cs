@@ -7,9 +7,9 @@ public class LeaderBehaviour : MonoBehaviour
 
     public GameController gameController;
 
-    public void AssingGameController(GameController gameController)
+    public void AssingGameController(GameController _gameController)
     {
-        this.gameController = gameController;
+        gameController = _gameController;
     }
 
     // Start is called before the first frame update
