@@ -58,4 +58,9 @@ public class RocketController : MonoBehaviour
             att.Attract(gameObject);
         }
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log(collision);
+    }
 }

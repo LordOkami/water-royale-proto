@@ -7,7 +7,10 @@ public class GameController : MonoBehaviour
 {
     public GameObject camera;
 
+    public GameObject focusStar;
+
     public FollowBehaviour follow;
+    public FollowBehaviour followStar;
 
     private int totalPlayers = 0;
 
@@ -22,7 +25,10 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
-        follow = camera.GetComponent<FollowBehaviour>();   
+        follow = camera.GetComponent<FollowBehaviour>();
+
+        followStar = focusStar.GetComponent<FollowBehaviour>();
+
     }
 
     // Update is called once per frame
@@ -32,8 +38,14 @@ public class GameController : MonoBehaviour
         {
             int nextPlayer = Random.Range(0, players.Count);
             follow.player = players[nextPlayer];
+            followStar.player = players[nextPlayer];
 
             totalPlayers = players.Count;
         }
+    }
+
+    public static void setPlayerFocus()
+    {
+
     }
 }
