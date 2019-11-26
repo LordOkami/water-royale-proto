@@ -5,11 +5,11 @@ using UnityEngine;
 public class LeaderBehaviour : MonoBehaviour
 {
 
-    public GameController gameController;
+    public GameManager gameManager;
 
-    public void AssingGameController(GameController _gameController)
+    public void AssingGameController(GameManager _gameController)
     {
-        gameController = _gameController;
+        gameManager = _gameController;
     }
 
     // Start is called before the first frame update
@@ -25,6 +25,6 @@ public class LeaderBehaviour : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        gameController.OnLeaderCollide(collision);
+        gameManager.OnLeaderCollide(collision);
     }
 }

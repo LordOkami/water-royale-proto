@@ -19,7 +19,7 @@ public class RocketController : MonoBehaviour
 
     private void OnEnable()
     {
-        GameController.RegisterPlayer(this.gameObject);
+        GameManager.RegisterPlayer(this.gameObject);
     }
 
     private void OnRocketRight(InputValue value)
@@ -55,11 +55,6 @@ public class RocketController : MonoBehaviour
         Vector2 dirVector = transform.position - thrust.position;
         rigidBody.AddForce(dirVector.normalized * velocity * movementInput.y);
         rigidBody.AddTorque(-movementInput.x * rotationForce);
-
-        foreach(Attractor att in Attractor.attractors )
-        {
-            att.Attract(gameObject);
-        }
     }
 
 }

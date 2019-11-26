@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5295533200584949589}
   - component: {fileID: 2189466770118004989}
   - component: {fileID: 735082070709790906}
+  - component: {fileID: 4462105226176110386}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -245,6 +246,18 @@ MonoBehaviour:
   velocity: 5
   rotationForce: 0.1
   thrust: {fileID: 2896517161985693576}
+--- !u!114 &4462105226176110386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1864252385606713154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5057330babbc0442b892ee12a27d702c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8522610613621740351
 GameObject:
   m_ObjectHideFlags: 0

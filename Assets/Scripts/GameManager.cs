@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class GameController : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
     public GameObject camera;
 
@@ -71,7 +71,7 @@ public class GameController : MonoBehaviour
     {
 
         LeaderBehaviour pb = player.AddComponent<LeaderBehaviour>() as LeaderBehaviour;
-        pb.gameController = this;
+        pb.gameManager = this;
 
     }
 
