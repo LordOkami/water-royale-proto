@@ -58,7 +58,7 @@ public class @Controls : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""7c0ca51f-f204-4972-a258-c69e328341a2"",
-                    ""path"": ""<HID::Nintendo Wireless Gamepad>/button5"",
+                    ""path"": ""<HID::Nintendo Wireless Gamepad>/button6"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -80,7 +80,7 @@ public class @Controls : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""3dff864b-fa11-493c-b772-e2c973581939"",
-                    ""path"": ""<HID::Nintendo Wireless Gamepad>/button6"",
+                    ""path"": ""<HID::Nintendo Wireless Gamepad>/button5"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
