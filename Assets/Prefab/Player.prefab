@@ -128,7 +128,7 @@ MonoBehaviour:
     m_ActionId: c6642f5d-0a9a-4d63-99e4-467168f484f0
     m_ActionName: UI/TrackedDeviceSelect
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: Gamepad
+  m_DefaultControlScheme: 
   m_DefaultActionMap: Rocket
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}

@@ -20,25 +20,25 @@ public class @Controls : IInputActionCollection, IDisposable
             ""actions"": [
                 {
                     ""name"": ""RocketRight"",
-                    ""type"": ""Value"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""06925ff6-c41e-4266-a69a-22db2e133ee9"",
-                    ""expectedControlType"": ""Analog"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
                 },
                 {
                     ""name"": ""RocketLeft"",
-                    ""type"": ""Value"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""ba675cda-f0d5-4b9b-a176-be2f76394795"",
-                    ""expectedControlType"": ""Analog"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
                 },
                 {
                     ""name"": ""Reset"",
-                    ""type"": ""Value"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""b704349b-a28e-4944-a8c7-d9cf0dca15bf"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
                 }
@@ -57,8 +57,30 @@ public class @Controls : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""7c0ca51f-f204-4972-a258-c69e328341a2"",
+                    ""path"": ""<HID::Nintendo Wireless Gamepad>/button5"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RocketRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""64a90aeb-1eb3-4c38-aaab-485081e94167"",
                     ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RocketLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3dff864b-fa11-493c-b772-e2c973581939"",
+                    ""path"": ""<HID::Nintendo Wireless Gamepad>/button6"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
