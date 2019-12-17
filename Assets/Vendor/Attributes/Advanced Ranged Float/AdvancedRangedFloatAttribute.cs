@@ -40,7 +40,7 @@
 using UnityEngine;
 
 [System.Serializable]
-public class RangedFloatAttribute : PropertyAttribute
+public class AdvancedRangedFloatAttribute : PropertyAttribute
 {
 
     //------------------------------------------------------------------------------------//
@@ -66,7 +66,7 @@ public class RangedFloatAttribute : PropertyAttribute
     //---------------------------------- METHODS -----------------------------------------//
     //------------------------------------------------------------------------------------//
 
-    public RangedFloatAttribute(float min, float max, RangeDisplayType rangeDisplayType = RangeDisplayType.LockedRanges)
+    public AdvancedRangedFloatAttribute(float min, float max, RangeDisplayType rangeDisplayType = RangeDisplayType.LockedRanges)
     {
         this.min = min;
         this.max = max;

@@ -8,7 +8,7 @@
  *       -- Ranged Float Drawer.
  *       
  *   <<< DESCRIPTION >>>
- *       -- Fallback drawer in case the class RangedFloat is inteneded to be used without the RangedFloatAttribute.
+ *       -- Fallback drawer in case the class AdvancedRangedFloat is inteneded to be used without the AdvancedRangedFloatAttribute.
  *
  *   <<< LIMITATIONS >>>
  *       -- None.
@@ -38,8 +38,8 @@
 using UnityEditor;
 using UnityEngine;
 
-[CustomPropertyDrawer(typeof(RangedFloat))]
-public class RangedFloatDrawer : PropertyDrawer
+[CustomPropertyDrawer(typeof(AdvancedRangedFloat))]
+public class AdvancedRangedFloatDrawer : PropertyDrawer
 {
     //------------------------------------------------------------------------------------//
     //----------------------------------- FIELDS -----------------------------------------//

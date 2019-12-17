@@ -42,8 +42,8 @@ using System.Globalization;
 using UnityEngine;
 using UnityEditor;
 
-[CustomPropertyDrawer(typeof(RangedFloatAttribute))]
-class RangedFloatAttributeDrawer : PropertyDrawer // [1]
+[CustomPropertyDrawer(typeof(AdvancedRangedFloatAttribute))]
+class AdvancedRangedFloatAttributeDrawer : PropertyDrawer // [1]
 {
     private const float _COMPONENT_HEIGHT = 16f;
     private const float _VERTICAL_PADDING = 2f;
@@ -62,7 +62,7 @@ class RangedFloatAttributeDrawer : PropertyDrawer // [1]
             float currentMaxCopy = currentMax.floatValue;
             float currentMinCopy = currentMin.floatValue;
 
-            RangedFloatAttribute validRange = attribute as RangedFloatAttribute;
+            AdvancedRangedFloatAttribute validRange = attribute as AdvancedRangedFloatAttribute;
 
             #endregion Variable Initialization
 
@@ -79,7 +79,7 @@ class RangedFloatAttributeDrawer : PropertyDrawer // [1]
 
             // Given how the valid ranges themselves aren't stored anywhere, when you close the inspector the valid range values will reset.
             // In an attempt to "remember" them, if the current value "breaks" the limits, it means that the limit was lowered, or increased manually last time, so the current values will be used as temporal limits when reloaded.
-            if (validRange.rangeDisplayType == RangedFloatAttribute.RangeDisplayType.EditableRanges)
+            if (validRange.rangeDisplayType == AdvancedRangedFloatAttribute.RangeDisplayType.EditableRanges)
             {
                 if (validRange.min > currentMinCopy)
                 {
@@ -94,7 +94,7 @@ class RangedFloatAttributeDrawer : PropertyDrawer // [1]
 
             EditorGUI.MinMaxSlider(sliderRect, label, ref currentMinCopy, ref currentMaxCopy, validRange.min, validRange.max);
 
-            if (validRange.rangeDisplayType != RangedFloatAttribute.RangeDisplayType.HideRanges)
+            if (validRange.rangeDisplayType != AdvancedRangedFloatAttribute.RangeDisplayType.HideRanges)
             {
                 Rect lower = EditorGUI.PrefixLabel(sliderRect, label);
                 lower.y += _COMPONENT_HEIGHT + _VERTICAL_PADDING;
@@ -103,12 +103,12 @@ class RangedFloatAttributeDrawer : PropertyDrawer // [1]
                     lower.width,
                     _COMPONENT_HEIGHT);
 
-                if (validRange.rangeDisplayType == RangedFloatAttribute.RangeDisplayType.LockedRanges)
+                if (validRange.rangeDisplayType == AdvancedRangedFloatAttribute.RangeDisplayType.LockedRanges)
                 {
                     currentMinCopy = EditorGUI.FloatField(lower, string.Format("Lower (Min: {0})", validRange.min.ToString(CultureInfo.InvariantCulture)), currentMinCopy);
                     currentMaxCopy = EditorGUI.FloatField(upper, string.Format("Upper (Max: {0})", validRange.max.ToString(CultureInfo.InvariantCulture)), currentMaxCopy);
                 }
-                else if (validRange.rangeDisplayType == RangedFloatAttribute.RangeDisplayType.EditableRanges)
+                else if (validRange.rangeDisplayType == AdvancedRangedFloatAttribute.RangeDisplayType.EditableRanges)
                 {
                     // Draw lower
                     lower.width /= 4f;
@@ -161,15 +161,15 @@ class RangedFloatAttributeDrawer : PropertyDrawer // [1]
         else
         {
             Debug.LogError(string.Format("Attempting to use the <b>'[{0}(float min, float max)]'</b> attribute on a <color=red>{1}</color> type field. Should be <color=green>'{2}'</color> instead."
-                , typeof(RangedFloat).Name, property.type, typeof(RangedFloat).Name));
+                , typeof(AdvancedRangedFloatAttribute).Name, property.type, typeof(AdvancedRangedFloatAttribute).Name));
         }
     }//End of OnGUI
 
 
     public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
     {
-        RangedFloatAttribute rangedFloatAttribute = attribute as RangedFloatAttribute;
-        int additionalRows = rangedFloatAttribute.rangeDisplayType == RangedFloatAttribute.RangeDisplayType.HideRanges ? 0 : 2;
+        AdvancedRangedFloatAttribute AdvancedRangedFloatAttribute = attribute as AdvancedRangedFloatAttribute;
+        int additionalRows = AdvancedRangedFloatAttribute.rangeDisplayType == AdvancedRangedFloatAttribute.RangeDisplayType.HideRanges ? 0 : 2;
         return base.GetPropertyHeight(property, label) + _COMPONENT_HEIGHT + (additionalRows * _COMPONENT_HEIGHT);
     }//End of GetPropertyHeight(SerializedProperty property, GUIContent label)
 

@@ -40,7 +40,7 @@
 using UnityEngine;
 
 [System.Serializable]
-public class RangedFloat
+public class AdvancedRangedFloat
 {
     //------------------------------------------------------------------------------------//
     //----------------------------------- FIELDS -----------------------------------------//
@@ -60,12 +60,12 @@ public class RangedFloat
         max = 1;
     }//End of Init()
 
-    public RangedFloat()
+    public AdvancedRangedFloat()
     {
         Init();
     }//End of MinMaxFloat()
 
-    public RangedFloat(float min, float max)
+    public AdvancedRangedFloat(float min, float max)
     {
         this.min = min;
         this.max = max;
@@ -90,7 +90,7 @@ public class RangedFloat
     /// Implicit operator that will automatically fetch a random value within range when a <see cref="RangedFloat"/> is used as a <see cref="float"/>.
     /// </summary>
     /// <param name="someRangedFloat"></param>
-    public static implicit operator float(RangedFloat someRangedFloat)
+    public static implicit operator float(AdvancedRangedFloat someRangedFloat)
     {
         return someRangedFloat.GetRandomValue();
     }//End of implicit operator float
