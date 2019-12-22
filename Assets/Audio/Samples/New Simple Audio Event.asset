@@ -12,4 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d973cd7f34c94487b687273d36185da, type: 3}
   m_Name: New Simple Audio Event
   m_EditorClassIdentifier: 
-  clips: []
+  clips:
+  - {fileID: 8300000, guid: 8376a4f8c812848e0bee5240f74f0fae, type: 3}
+  - {fileID: 8300000, guid: 704a0bba44db24eb3b68bed195c69701, type: 3}
+  - {fileID: 8300000, guid: da2feef90a22745d09a438423e664b06, type: 3}
+  volume:
+    minValue: 0.5736339
+    maxValue: 1
+  pitch:
+    minValue: 0.49987748
+    maxValue: 0.79882383
