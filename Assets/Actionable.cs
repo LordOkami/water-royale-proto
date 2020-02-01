@@ -5,10 +5,11 @@ using UnityEngine;
 public class Actionable : MonoBehaviour
 {
 
-    public enum ACTION { DRAIN, FILL, NOTHING };
+    public enum ACTION { DRAIN, FILL, REPAIR, NOTHING };
 
     public ACTION action = ACTION.NOTHING;
     public float percentagePerSecond = 1;
+    public float secondsForRepairing = 2;
     public int playerId = -1;
     
     // Start is called before the first frame update
