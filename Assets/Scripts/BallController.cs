@@ -18,6 +18,7 @@ public class BallController : MonoBehaviour
     private void OnEnable()
     {
         GameManager.RegisterPlayer(this.gameObject);
+        transform.parent = GameObject.Find("IndividualGame").transform;
     }
 
     private void OnMove(InputValue value)
@@ -51,6 +52,21 @@ public class BallController : MonoBehaviour
     {
         rigidBody.AddForce(new Vector2(horizontalMove, 0) * velocity);
         if(interacting && valve){
+            Actionable actionable = valve.GetComponent<Actionable>();
+            //actionable.unitsPerSecond
+            IndividualGameController individualGameController = GetComponentInParent<IndividualGameController>();
+            
+            switch (actionable.action)
+            {
+                case Actionable.ACTION.DRAIN:
+                    individualGameController.waterLevelPercentage -= actionable.percentagePerSecond / Application.targetFrameRate;
+
+                break;
+                case Actionable.ACTION.FILL:
+                    individualGameController.waterLevelPercentage += actionable.percentagePerSecond / Application.targetFrameRate;
+
+                    break;
+            }
           transform.position = valve.position;
         }
     }

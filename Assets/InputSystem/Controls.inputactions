@@ -34,7 +34,7 @@
                 {
                     "name": "",
                     "id": "9b4e1a11-7496-4dca-b003-e4b9368beefe",
-                    "path": "<Keyboard>/space",
+                    "path": "<Gamepad>/buttonNorth",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
@@ -43,46 +43,24 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "1D Axis",
-                    "id": "6f32057a-11b5-4743-8077-45930890eda6",
-                    "path": "1DAxis",
+                    "name": "",
+                    "id": "86f1eaf3-1dbf-4b79-8f34-4b38e23e4098",
+                    "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
-                    "action": "move",
-                    "isComposite": true,
+                    "groups": "Gamepad",
+                    "action": "interact",
+                    "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "negative",
-                    "id": "2b8f14f2-a547-4560-acdb-676eb9337328",
-                    "path": "<Keyboard>/leftArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "positive",
-                    "id": "1aebaba8-172a-4540-86fc-aab0164c9f59",
-                    "path": "<Keyboard>/rightArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
                     "name": "",
-                    "id": "86f1eaf3-1dbf-4b79-8f34-4b38e23e4098",
-                    "path": "<Keyboard>/downArrow",
+                    "id": "be7a4ea3-57be-455d-8045-d8d34db7d9ce",
+                    "path": "<Gamepad>/leftStick/x",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "interact",
+                    "groups": "Gamepad",
+                    "action": "move",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

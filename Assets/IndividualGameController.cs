@@ -117,7 +117,8 @@ public class IndividualGameController : MonoBehaviour
         while (true)
         {
 
-            GameObject newValve = Instantiate(availableActionables[Random.Range(0, availableActionables.Length - 1)]);
+            GameObject newValve = Instantiate(availableActionables[Random.Range(0, availableActionables.Length)]);
+            
             newValve.transform.parent = gameContainer.transform;
 
             float valveWidth = newValve.transform.localScale.x;

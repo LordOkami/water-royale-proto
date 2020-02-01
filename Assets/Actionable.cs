@@ -8,7 +8,7 @@ public class Actionable : MonoBehaviour
     public enum ACTION { DRAIN, FILL, NOTHING };
 
     public ACTION action = ACTION.NOTHING;
-    public float unitsPerSecond = 1;
+    public float percentagePerSecond = 1;
     public int playerId = -1;
     
     // Start is called before the first frame update
