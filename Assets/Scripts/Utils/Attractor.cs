@@ -19,7 +19,6 @@ public class Attractor : MonoBehaviour
 
         attractors.Add(this);
 
-        Debug.Log("added attractor");
     }
 
 

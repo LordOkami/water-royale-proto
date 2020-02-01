@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4216120022214485151
+--- !u!1 &1709515306350182421
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,38 +8,37 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4216120022214485149}
-  - component: {fileID: 4216120022214485148}
-  - component: {fileID: 8397977325198445361}
-  - component: {fileID: 5654077670579004216}
+  - component: {fileID: 1709515306350182422}
+  - component: {fileID: 1709515306350182423}
+  - component: {fileID: 5352724783718854658}
   m_Layer: 0
-  m_Name: Drain Valve
+  m_Name: Crack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4216120022214485149
+--- !u!4 &1709515306350182422
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4216120022214485151}
+  m_GameObject: {fileID: 1709515306350182421}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.31, y: 0, z: -10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.1, y: 1.66, z: 0}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &4216120022214485148
+--- !u!212 &1709515306350182423
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4216120022214485151}
+  m_GameObject: {fileID: 1709515306350182421}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -72,45 +71,33 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 28ff05125de439942bec8635523d071d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a2d03ee6112a5904baed83b043fb7cee, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.66, y: 1.51}
+  m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8397977325198445361
+--- !u!114 &5352724783718854658
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4216120022214485151}
+  m_GameObject: {fileID: 1709515306350182421}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d7e3d3f53fa7944f94baf22fe8dcd69, type: 3}
+  m_Script: {fileID: 11500000, guid: 34e773a2496009d4fa9b453daad327f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  action: 2
-  unitsPerSecond: 1
-  playerId: -1
---- !u!58 &5654077670579004216
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4216120022214485151}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.0077614784}
-  serializedVersion: 2
-  m_Radius: 0.814477
+  levelSprites:
+  - {fileID: 21300000, guid: a2d03ee6112a5904baed83b043fb7cee, type: 3}
+  - {fileID: 21300000, guid: dd765daca8301654e8889f817f498617, type: 3}
+  - {fileID: 21300000, guid: 694809eb2e725e6438f272e6eb6bae2a, type: 3}
+  waterdropPrefab: {fileID: 5434464919686466940, guid: 58a4f64c6ca1a9b4f874318dbdffc7b8,
+    type: 3}
+  waterdropSpeed: 1

@@ -143,7 +143,29 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &451485568
+
+--- !u!114 &1033395976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1033395975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecd9215db3c92ab4e9b7d8e97fcb71ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  valveSpawnEverySeconds: 1
+  pixelsPerFrame: 0.07
+  width: 8
+  height: 16
+  availableActionables:
+  - {fileID: 4216120022214485151, guid: ed3dd823defbbe14e9980791ce601b09, type: 3}
+  - {fileID: 730275135388454752, guid: 75f5eb29faf4b0b44bd613444c8a3a7b, type: 3}
+  currentActionables: []
+  waterLevelPercentage: 50
+--- !u!4 &1033395977
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -26,8 +26,6 @@ public class PlayerLoader : MonoBehaviour
 			yield return new WaitForEndOfFrame();
 		}
 
-		Debug.Log("Moving Scene " + transform.position.x);
-
 		var rootGameObjects = scene.GetRootGameObjects();
 		foreach (var rootGameObject in rootGameObjects)
 		{

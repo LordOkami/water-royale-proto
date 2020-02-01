@@ -116,7 +116,6 @@ public class IndividualGameController : MonoBehaviour
 
         while (true)
         {
-            Debug.Log("Creating Valve interation");
 
             GameObject newValve = Instantiate(availableActionables[Random.Range(0, availableActionables.Length - 1)]);
             newValve.transform.parent = gameContainer.transform;
