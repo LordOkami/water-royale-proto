@@ -11,11 +11,15 @@ public class IndividualGameController : MonoBehaviour
     public int width = 10;
     public int height = 10;
 
+    public int maxCracksOpen = 10;
+
     public GameObject[] availableActionables;
     private List<GameObject> currentActionables = new List<GameObject>();
     private GameObject waterObject;
+    private int cracksOpen = 0;
 
     public float waterLevelPercentage = 50;
+    public float crackFillSpeed = 0.2f;
     
     //private int maxActionablesPerIteration = 3;
 
@@ -77,7 +81,7 @@ public class IndividualGameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        this.waterLevelPercentage += (this.crackFillSpeed * this.cracksOpen) / Application.targetFrameRate;
     }
 
     // Increase the number of calls to FixedUpdate.
@@ -91,10 +95,26 @@ public class IndividualGameController : MonoBehaviour
         currentActionables.ForEach(go =>
         {
             go.transform.position = go.transform.position - new Vector3(0, pixelsPerFrame);
-            if (go.transform.position.y < -((height / 2) +go.transform.lossyScale.y))
+            if (go.transform.position.y < -((height / 2) + go.transform.lossyScale.y))
             {
-               
                 elementsToBeDeleted.Add(go);
+            }
+            else if (go.CompareTag("waterdrop"))
+            {
+                List<GameObject> dropsToBeDeleted = new List<GameObject>();
+                foreach (GameObject drop in go.GetComponent<CrackBehaviour>().getWaterdrops())
+                {
+                    if (drop.transform.position.y < (-(height / 2) + waterHeight))
+                    {
+                        dropsToBeDeleted.Add(drop);
+                    }
+                }
+
+                dropsToBeDeleted.ForEach(etbd =>
+                {
+                    Destroy(etbd);
+                    go.GetComponent<CrackBehaviour>().getWaterdrops().Remove(etbd);
+                });
             }
         });
 
@@ -108,6 +128,13 @@ public class IndividualGameController : MonoBehaviour
 
     }
 
+    public void repairCrack(GameObject crack)
+    {
+        this.cracksOpen--;
+        this.currentActionables.Remove(crack);
+        Destroy(crack);
+    }
+
 #pragma warning disable IDE0051 // Quitar miembros privados no utilizados
     IEnumerator CreateValve()
 #pragma warning restore IDE0051 // Quitar miembros privados no utilizados
@@ -118,6 +145,10 @@ public class IndividualGameController : MonoBehaviour
         {
 
             GameObject newValve = Instantiate(availableActionables[Random.Range(0, availableActionables.Length)]);
+            if(newValve.CompareTag("waterdrop") && cracksOpen < this.maxCracksOpen)
+            {
+                this.cracksOpen++;
+            }
             
             newValve.transform.parent = gameContainer.transform;
 

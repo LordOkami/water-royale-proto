@@ -11,6 +11,7 @@ public class BallController : MonoBehaviour
     private bool interacting = false;
     private Transform valve;
 
+    private float timeRepairing;
 
     private Rigidbody2D rigidBody;
     float horizontalMove;
@@ -65,6 +66,14 @@ public class BallController : MonoBehaviour
                 case Actionable.ACTION.FILL:
                     individualGameController.waterLevelPercentage += actionable.percentagePerSecond / Application.targetFrameRate;
 
+                    break;
+                case Actionable.ACTION.REPAIR:
+                    this.timeRepairing += Time.deltaTime;
+                    if(this.timeRepairing >= actionable.secondsForRepairing)
+                    {
+                        individualGameController.repairCrack(valve.gameObject);
+                        this.timeRepairing = 0;
+                    }
                     break;
             }
           transform.position = valve.position;
