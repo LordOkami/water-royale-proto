@@ -69,6 +69,7 @@ public class BallController : MonoBehaviour
                     break;
                 case Actionable.ACTION.REPAIR:
                     this.timeRepairing += Time.deltaTime;
+                    valve.GetComponent<CrackBehaviour>().spawnSparks();
                     if(this.timeRepairing >= actionable.secondsForRepairing)
                     {
                         individualGameController.repairCrack(valve.gameObject);

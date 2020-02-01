@@ -13,12 +13,27 @@ public class CrackBehaviour : MonoBehaviour
 
     public Sprite[] levelSprites;
     public GameObject waterdropPrefab;
+    public GameObject sparkPrefab;
+
+    private GameObject spawnedSpark;
 
     public float waterdropSpawnSpeed = 1;
 
     public List<GameObject> getWaterdrops()
     {
         return this.waterdrops;
+    }
+
+    public void spawnSparks()
+    {
+        GameObject spark = Instantiate(sparkPrefab);
+        spark.transform.parent = this.transform;
+        spark.transform.position = this.transform.position;
+    }
+
+    public void removeSparks()
+    {
+        Destroy(this.spawnedSpark);
     }
 
     // Start is called before the first frame update
