@@ -26,10 +26,13 @@ public class CrackBehaviour : MonoBehaviour
 
     public void spawnSparks()
     {
-        GameObject spark = Instantiate(sparkPrefab);
-        spark.transform.parent = this.transform;
-        spark.transform.position = this.transform.position;
-        this.spawnedSpark = spark;
+        if(!this.spawnedSpark)
+        {
+            GameObject spark = Instantiate(sparkPrefab);
+            spark.transform.parent = this.transform;
+            spark.transform.position = this.transform.position;
+            this.spawnedSpark = spark;
+        }
     }
 
     public void removeSparks()
