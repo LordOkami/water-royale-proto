@@ -29,6 +29,7 @@ public class CrackBehaviour : MonoBehaviour
         GameObject spark = Instantiate(sparkPrefab);
         spark.transform.parent = this.transform;
         spark.transform.position = this.transform.position;
+        this.spawnedSpark = spark;
     }
 
     public void removeSparks()
@@ -36,6 +37,7 @@ public class CrackBehaviour : MonoBehaviour
         if (this.spawnedSpark)
         {
             Destroy(this.spawnedSpark);
+            this.spawnedSpark = null;
         }
     }
 
