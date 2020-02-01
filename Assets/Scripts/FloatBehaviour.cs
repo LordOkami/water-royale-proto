@@ -9,12 +9,12 @@ public class FloatBehaviour : MonoBehaviour
     void Start()
     {
 
+
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        
+    void Update() { 
+    
     }
 
     void OnTriggerStay2D(Collider2D hit)
@@ -22,15 +22,25 @@ public class FloatBehaviour : MonoBehaviour
         if (hit.attachedRigidbody)
         {
 
-            if (hit.transform.position.y < -1)
+            if (hit.transform.position.y < transform.position.y + (transform.localScale.y / 2))
             {
-                float distance = hit.transform.position.y + 1;
+                float distance = transform.position.y + (transform.localScale.y/2) - hit.transform.position.y;
                 Debug.Log(distance);
                 Rigidbody2D rb = hit.GetComponent<Rigidbody2D>();
-                rb.AddForce(Vector3.up * rb.mass * -distance * factor);
+                rb.AddForce(Vector3.up * rb.mass * distance * factor);
             }
            
         }
+    }
+
+    void increaseLevel()
+    {
+
+    }
+
+    void decreaseLevel()
+    {
+
     }
 
 }

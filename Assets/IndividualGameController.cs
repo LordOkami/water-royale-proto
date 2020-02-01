@@ -8,16 +8,18 @@ public class IndividualGameController : MonoBehaviour
     public float valveSpawnEverySeconds = 1f;
     public float pixelsPerFrame = 0.01f;
     
-    public int width = 480;
-    public int height = 720;
+    public int width = 10;
+    public int height = 10;
 
     public GameObject[] availableActionables;
     private List<GameObject> currentActionables = new List<GameObject>();
+    private GameObject waterObject;
 
-    private int maxActionablesPerIteration = 3;
-
+    public float waterLevelPercentage = 50;
     
-    private GameObject gameContainer;
+    //private int maxActionablesPerIteration = 3;
+
+        private GameObject gameContainer;
 
     void Awake()
     {
@@ -33,12 +35,21 @@ public class IndividualGameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameContainer = new GameObject();
-        gameContainer.name = "Game container";
-        gameContainer.transform.localScale = new Vector2(width, height);
-        gameContainer.transform.parent = transform;
-        SpriteRenderer spriteRenderer = gameContainer.AddComponent<SpriteRenderer>();
 
+        //Create the game container
+        gameContainer = transform.Find("GameContainer").gameObject;
+        gameContainer.transform.localScale = new Vector2(width, height);
+        
+        //Get the water
+        waterObject = transform.Find("Water").gameObject;
+
+
+        int wallCount = transform.Find("Walls").childCount;
+        for(int i = 0; i< wallCount; i++)
+        {
+            Transform wallTransform = transform.Find("Walls").GetChild(i).transform;
+            wallTransform.localScale = new Vector2(wallTransform.localScale.x, height);
+        }
 
 
         /*  spriteRenderer.color = Color.red;
@@ -70,10 +81,18 @@ public class IndividualGameController : MonoBehaviour
     // Increase the number of calls to FixedUpdate.
     void FixedUpdate()
     {
+        float waterHeight = height * (waterLevelPercentage/100);
+        waterObject.transform.localPosition = new Vector2(0, -(height/2)+(waterHeight/2));
+        waterObject.transform.localScale = new Vector2(width, waterHeight);
         
         currentActionables.ForEach(go =>
         {
             go.transform.position = go.transform.position - new Vector3(0, pixelsPerFrame);
+            if (go.transform.position.y < -((height / 2) +go.transform.lossyScale.y))
+            {
+                Destroy(go);
+                currentActionables.Remove(go);
+            }
         });
 
 
