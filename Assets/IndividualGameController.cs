@@ -55,7 +55,7 @@ public class IndividualGameController : MonoBehaviour
         /*  spriteRenderer.color = Color.red;
         
         spriteRenderer.sprite = Resources.Load<Sprite>("Sprites/Square") as Sprite;*/
-        
+
 
 
         /*GameObject playerCameraGameObject = new GameObject("Player Camera");
@@ -67,6 +67,8 @@ public class IndividualGameController : MonoBehaviour
         camera.farClipPlane = 10;
         playerCameraGameObject.transform.position = new Vector3(0, 0, -10);
         */
+        
+
         StartCoroutine(CreateValve());
 
 
@@ -84,18 +86,25 @@ public class IndividualGameController : MonoBehaviour
         float waterHeight = height * (waterLevelPercentage/100);
         waterObject.transform.localPosition = new Vector2(0, -(height/2)+(waterHeight/2));
         waterObject.transform.localScale = new Vector2(width, waterHeight);
-        
+
+        List<GameObject> elementsToBeDeleted = new List<GameObject>();
         currentActionables.ForEach(go =>
         {
             go.transform.position = go.transform.position - new Vector3(0, pixelsPerFrame);
             if (go.transform.position.y < -((height / 2) +go.transform.lossyScale.y))
             {
-                Destroy(go);
-                currentActionables.Remove(go);
+               
+                elementsToBeDeleted.Add(go);
             }
         });
 
+        //Delete old objects
 
+        elementsToBeDeleted.ForEach(etbd =>
+        {
+            Destroy(etbd);
+            currentActionables.Remove(etbd);
+        });
 
     }
 
@@ -103,20 +112,23 @@ public class IndividualGameController : MonoBehaviour
     IEnumerator CreateValve()
 #pragma warning restore IDE0051 // Quitar miembros privados no utilizados
     {
+              
 
         while (true)
         {
             Debug.Log("Creating Valve interation");
 
             GameObject newValve = Instantiate(availableActionables[Random.Range(0, availableActionables.Length - 1)]);
-
-            float valveWidth = newValve.GetComponent<SpriteRenderer>().size.x;
-            float valveHeight = newValve.GetComponent<SpriteRenderer>().size.y;
-
-            float randomX = Random.Range(valveWidth / 2, width - (valveWidth / 2))-(width/2);
-
-            newValve.transform.position = new Vector3(randomX, (height / 2) + valveHeight, 0);
             newValve.transform.parent = gameContainer.transform;
+
+            float valveWidth = newValve.transform.localScale.x;
+            float valveHeight = newValve.transform.localScale.y;
+
+            //float randomX = Random.Range(-0.5f + valveWidth, 0.5f - valveWidth);
+            float randomX = Random.Range(-0.5f + valveWidth, 0.5f - valveWidth);
+
+            
+            newValve.transform.localPosition = new Vector3(randomX, 0.5f , 0);
             
             currentActionables.Add(newValve);
 

@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class PlayerLoaderController : MonoBehaviour
 {
+	
 	private int xPos = 0;
-	private int playerIdx = 0;
-	private int height = 10;
+	private int sceneHeight = 10;
 
 	private void Start()
 	{
+		
+		AddPlayer("Single");
+		AddPlayer("Single");
 		AddPlayer("Single");
 		AddPlayer("Single");
 	}
@@ -20,12 +23,12 @@ public class PlayerLoaderController : MonoBehaviour
 	
 	}
 
-	private void AddPlayer(string playerName)
+	private void AddPlayer(string sceneName)
 	{
-		xPos += height;
+		xPos += sceneHeight;
 
 		var playerLoader = new GameObject("PlayerLoader").AddComponent<PlayerLoader>();
 		playerLoader.transform.position = new Vector3(xPos, 0f,0f );
-		playerLoader.Load(playerName);
+		playerLoader.Load(sceneName);
 	}
 }

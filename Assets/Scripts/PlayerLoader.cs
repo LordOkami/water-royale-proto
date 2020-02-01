@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class PlayerLoader : MonoBehaviour
 {
+
+	int scenesLoaded = 0;
 	public void Load(string roomName)
 	{
 		SceneManager.sceneLoaded += SceneManager_sceneLoaded;
@@ -28,6 +30,12 @@ public class PlayerLoader : MonoBehaviour
 
 		var rootGameObjects = scene.GetRootGameObjects();
 		foreach (var rootGameObject in rootGameObjects)
-			rootGameObject.transform.position += transform.position;
+		{
+
+			rootGameObject.transform.position += new Vector3(rootGameObject.transform.localScale.x*scenesLoaded,0,0);
+		}
+			
+
+		scenesLoaded++;
 	}
 }
