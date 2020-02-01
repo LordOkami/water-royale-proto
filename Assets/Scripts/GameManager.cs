@@ -26,4 +26,16 @@ public class GameManager : MonoBehaviour
 
     }
 
+    public static void UpdateGame(Game _game)
+    {
+    }
+
+    public static void UpdatePlayer(Player _player)
+    {
+    }
+
+    public static void UpdateCountdown(int count)
+    {
+    }
+
 }

@@ -18,7 +18,6 @@ public class BallController : MonoBehaviour
 
     private void OnEnable()
     {
-        Debug.Log("ONENABLE");
         GameManager.RegisterPlayer(this.gameObject);
         transform.parent = GameObject.Find("IndividualGame").transform;
     }
