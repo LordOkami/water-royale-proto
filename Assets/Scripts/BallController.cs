@@ -17,6 +17,7 @@ public class BallController : MonoBehaviour
 
     private void OnEnable()
     {
+        Debug.Log("ONENABLE");
         GameManager.RegisterPlayer(this.gameObject);
         transform.parent = GameObject.Find("IndividualGame").transform;
     }
@@ -39,7 +40,6 @@ public class BallController : MonoBehaviour
       valve = collision.transform;
     }
     void OnTriggerExit2D(Collider2D c) {
-      Debug.Log("OUT!");
       valve= null;
     }
     void Start()
