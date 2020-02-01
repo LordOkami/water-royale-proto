@@ -100,6 +100,52 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Ball"",
+            ""id"": ""d8a28251-6844-4196-a767-794dcb15d2ff"",
+            ""actions"": [
+                {
+                    ""name"": ""action"",
+                    ""type"": ""Button"",
+                    ""id"": ""300af207-de9a-473e-afd4-8c0eaff89821"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""move"",
+                    ""type"": ""Value"",
+                    ""id"": ""3d9619f9-26e1-432b-9ab7-f6a473fc4e0b"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""33db511d-a222-42a8-bd20-16262cbe73d1"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""action"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""517999d8-6219-46ce-b220-a928e6dd589b"",
+                    ""path"": ""<Gamepad>/leftStick/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -170,6 +216,10 @@ public class @Controls : IInputActionCollection, IDisposable
         m_Rocket_RocketRight = m_Rocket.FindAction("RocketRight", throwIfNotFound: true);
         m_Rocket_RocketLeft = m_Rocket.FindAction("RocketLeft", throwIfNotFound: true);
         m_Rocket_Reset = m_Rocket.FindAction("Reset", throwIfNotFound: true);
+        // Ball
+        m_Ball = asset.FindActionMap("Ball", throwIfNotFound: true);
+        m_Ball_action = m_Ball.FindAction("action", throwIfNotFound: true);
+        m_Ball_move = m_Ball.FindAction("move", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -264,6 +314,47 @@ public class @Controls : IInputActionCollection, IDisposable
         }
     }
     public RocketActions @Rocket => new RocketActions(this);
+
+    // Ball
+    private readonly InputActionMap m_Ball;
+    private IBallActions m_BallActionsCallbackInterface;
+    private readonly InputAction m_Ball_action;
+    private readonly InputAction m_Ball_move;
+    public struct BallActions
+    {
+        private @Controls m_Wrapper;
+        public BallActions(@Controls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @action => m_Wrapper.m_Ball_action;
+        public InputAction @move => m_Wrapper.m_Ball_move;
+        public InputActionMap Get() { return m_Wrapper.m_Ball; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(BallActions set) { return set.Get(); }
+        public void SetCallbacks(IBallActions instance)
+        {
+            if (m_Wrapper.m_BallActionsCallbackInterface != null)
+            {
+                @action.started -= m_Wrapper.m_BallActionsCallbackInterface.OnAction;
+                @action.performed -= m_Wrapper.m_BallActionsCallbackInterface.OnAction;
+                @action.canceled -= m_Wrapper.m_BallActionsCallbackInterface.OnAction;
+                @move.started -= m_Wrapper.m_BallActionsCallbackInterface.OnMove;
+                @move.performed -= m_Wrapper.m_BallActionsCallbackInterface.OnMove;
+                @move.canceled -= m_Wrapper.m_BallActionsCallbackInterface.OnMove;
+            }
+            m_Wrapper.m_BallActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @action.started += instance.OnAction;
+                @action.performed += instance.OnAction;
+                @action.canceled += instance.OnAction;
+                @move.started += instance.OnMove;
+                @move.performed += instance.OnMove;
+                @move.canceled += instance.OnMove;
+            }
+        }
+    }
+    public BallActions @Ball => new BallActions(this);
     private int m_KeyboardMouseSchemeIndex = -1;
     public InputControlScheme KeyboardMouseScheme
     {
@@ -314,5 +405,10 @@ public class @Controls : IInputActionCollection, IDisposable
         void OnRocketRight(InputAction.CallbackContext context);
         void OnRocketLeft(InputAction.CallbackContext context);
         void OnReset(InputAction.CallbackContext context);
+    }
+    public interface IBallActions
+    {
+        void OnAction(InputAction.CallbackContext context);
+        void OnMove(InputAction.CallbackContext context);
     }
 }

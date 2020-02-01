@@ -87,6 +87,52 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Ball",
+            "id": "d8a28251-6844-4196-a767-794dcb15d2ff",
+            "actions": [
+                {
+                    "name": "action",
+                    "type": "Button",
+                    "id": "300af207-de9a-473e-afd4-8c0eaff89821",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "move",
+                    "type": "Value",
+                    "id": "3d9619f9-26e1-432b-9ab7-f6a473fc4e0b",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "33db511d-a222-42a8-bd20-16262cbe73d1",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "517999d8-6219-46ce-b220-a928e6dd589b",
+                    "path": "<Gamepad>/leftStick/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [
