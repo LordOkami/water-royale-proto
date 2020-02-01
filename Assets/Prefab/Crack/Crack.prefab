@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5352724783718854658}
   m_Layer: 0
   m_Name: Crack
-  m_TagString: Untagged
+  m_TagString: waterdrop
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -100,4 +100,4 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 694809eb2e725e6438f272e6eb6bae2a, type: 3}
   waterdropPrefab: {fileID: 5434464919686466940, guid: 58a4f64c6ca1a9b4f874318dbdffc7b8,
     type: 3}
-  waterdropSpeed: 1
+  waterdropSpawnSpeed: 1

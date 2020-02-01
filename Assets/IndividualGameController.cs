@@ -91,10 +91,26 @@ public class IndividualGameController : MonoBehaviour
         currentActionables.ForEach(go =>
         {
             go.transform.position = go.transform.position - new Vector3(0, pixelsPerFrame);
-            if (go.transform.position.y < -((height / 2) +go.transform.lossyScale.y))
+            if (go.transform.position.y < -((height / 2) + go.transform.lossyScale.y))
             {
-               
                 elementsToBeDeleted.Add(go);
+            }
+            else if (go.CompareTag("waterdrop"))
+            {
+                List<GameObject> dropsToBeDeleted = new List<GameObject>();
+                foreach (GameObject drop in go.GetComponent<CrackBehaviour>().getWaterdrops())
+                {
+                    if (drop.transform.position.y < (-(height / 2) + waterHeight))
+                    {
+                        dropsToBeDeleted.Add(drop);
+                    }
+                }
+
+                dropsToBeDeleted.ForEach(etbd =>
+                {
+                    Destroy(etbd);
+                    go.GetComponent<CrackBehaviour>().getWaterdrops().Remove(etbd);
+                });
             }
         });
 

@@ -9,10 +9,17 @@ public class CrackBehaviour : MonoBehaviour
     private float timeFromLevelUp = 0;
     private float timeFromLastWaterDrop = 0;
 
+    private List<GameObject> waterdrops = new List<GameObject>();
+
     public Sprite[] levelSprites;
     public GameObject waterdropPrefab;
 
     public float waterdropSpawnSpeed = 1;
+
+    public List<GameObject> getWaterdrops()
+    {
+        return this.waterdrops;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -61,5 +68,6 @@ public class CrackBehaviour : MonoBehaviour
         GameObject waterdrop = Instantiate(waterdropPrefab);
         waterdrop.transform.parent = this.transform;
         waterdrop.transform.position = this.transform.position;
+        waterdrops.Add(waterdrop);
     }
 }
