@@ -33,7 +33,10 @@ public class CrackBehaviour : MonoBehaviour
 
     public void removeSparks()
     {
-        Destroy(this.spawnedSpark);
+        if (this.spawnedSpark)
+        {
+            Destroy(this.spawnedSpark);
+        }
     }
 
     // Start is called before the first frame update

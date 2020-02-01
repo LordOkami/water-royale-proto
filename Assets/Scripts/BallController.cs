@@ -41,7 +41,11 @@ public class BallController : MonoBehaviour
       valve = collision.transform;
     }
     void OnTriggerExit2D(Collider2D c) {
-      valve= null;
+        if(valve && valve.CompareTag("waterdrop"))
+        {
+            valve.GetComponent<CrackBehaviour>().removeSparks();
+        }
+        valve = null;
     }
     void Start()
     {
@@ -77,7 +81,7 @@ public class BallController : MonoBehaviour
                     }
                     break;
             }
-          transform.position = valve.position;
+            transform.position = valve.position;
         }
     }
 
