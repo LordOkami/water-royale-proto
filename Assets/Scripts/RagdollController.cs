@@ -6,29 +6,29 @@ public class RagdollController : MonoBehaviour
 {
 
     public static GameObject cameraMan;
-    public float velocity;
+    public float force = 100;
 
     public GameObject leftHand;
     public GameObject rightHand;
 
-    private bool interacting = false;
+    public bool interacting = false;
     private Transform valve;
 
 
     private Rigidbody2D leftHandRb;
     private Rigidbody2D rightHandRb;
 
-    float horizontalMove;
+    Vector2 leftAxis;
 
     private void OnEnable()
     {
-        Debug.Log("ONENABLE");
+        Debug.Log("ON ENABLE");
         transform.parent = GameObject.Find("IndividualGame").transform;
     }
 
     private void OnMove(InputValue value)
     {
-        horizontalMove = value.Get<float>();
+        leftAxis = value.Get<Vector2>();
 
     }
 
@@ -36,6 +36,7 @@ public class RagdollController : MonoBehaviour
     private void OnInteract(InputValue value)
     {
         interacting = value.isPressed;
+        Debug.Log(interacting);
     }
 
     void Start()
@@ -48,29 +49,14 @@ public class RagdollController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        leftHandRb.AddForce(new Vector2(horizontalMove, 0) * velocity);
-        rightHandRb.AddForce(new Vector2(horizontalMove, 0) * velocity);
+        leftHandRb.AddForce(leftAxis * force);
+        rightHandRb.AddForce(leftAxis * force);
 
+    }
 
-        if (interacting && valve)
-        {
-            Actionable actionable = valve.GetComponent<Actionable>();
-            //actionable.unitsPerSecond
-            IndividualGameController individualGameController = GetComponentInParent<IndividualGameController>();
-
-            switch (actionable.action)
-            {
-                case Actionable.ACTION.DRAIN:
-                    individualGameController.waterLevelPercentage -= actionable.percentagePerSecond / Application.targetFrameRate;
-
-                    break;
-                case Actionable.ACTION.FILL:
-                    individualGameController.waterLevelPercentage += actionable.percentagePerSecond / Application.targetFrameRate;
-
-                    break;
-            }
-            transform.position = valve.position;
-        }
+    public bool GetInteracting()
+    {
+        return interacting;
     }
 
 }
