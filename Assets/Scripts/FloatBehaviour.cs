@@ -25,7 +25,6 @@ public class FloatBehaviour : MonoBehaviour
             if (hit.transform.position.y < transform.position.y + (transform.localScale.y / 2))
             {
                 float distance = transform.position.y + (transform.localScale.y/2) - hit.transform.position.y;
-                Debug.Log(distance);
                 Rigidbody2D rb = hit.GetComponent<Rigidbody2D>();
                 rb.AddForce(Vector3.up * rb.mass * distance * factor);
             }

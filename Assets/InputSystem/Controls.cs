@@ -22,7 +22,7 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""name"": ""spawn"",
                     ""type"": ""Button"",
                     ""id"": ""300af207-de9a-473e-afd4-8c0eaff89821"",
-                    ""expectedControlType"": """",
+                    ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
                 },
@@ -36,9 +36,9 @@ public class @Controls : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": ""interact"",
-                    ""type"": ""Button"",
+                    ""type"": ""Value"",
                     ""id"": ""b9832453-93ae-49a4-81d8-239235fd8ee3"",
-                    ""expectedControlType"": """",
+                    ""expectedControlType"": ""Analog"",
                     ""processors"": """",
                     ""interactions"": """"
                 }
@@ -46,33 +46,55 @@ public class @Controls : IInputActionCollection, IDisposable
             ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""33db511d-a222-42a8-bd20-16262cbe73d1"",
-                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""id"": ""9b4e1a11-7496-4dca-b003-e4b9368beefe"",
+                    ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""spawn"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": """",
-                    ""id"": ""932f8057-85ca-4d89-a406-2f8e69947197"",
-                    ""path"": ""<Gamepad>/leftStick/x"",
+                    ""name"": ""1D Axis"",
+                    ""id"": ""6f32057a-11b5-4743-8077-45930890eda6"",
+                    ""path"": ""1DAxis"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""move"",
-                    ""isComposite"": false,
+                    ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": """",
-                    ""id"": ""f923f1d2-3cee-4e3d-98d6-a0c8d6322724"",
-                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""name"": ""negative"",
+                    ""id"": ""2b8f14f2-a547-4560-acdb-676eb9337328"",
+                    ""path"": ""<Keyboard>/leftArrow"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""1aebaba8-172a-4540-86fc-aab0164c9f59"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""86f1eaf3-1dbf-4b79-8f34-4b38e23e4098"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false

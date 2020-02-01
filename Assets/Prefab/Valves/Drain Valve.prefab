@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4216120022214485149}
   - component: {fileID: 4216120022214485148}
   - component: {fileID: 8397977325198445361}
+  - component: {fileID: 5654077670579004216}
   m_Layer: 0
   m_Name: Drain Valve
   m_TagString: Untagged
@@ -94,3 +95,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d7e3d3f53fa7944f94baf22fe8dcd69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  action: 2
+  unitsPerSecond: 1
+  playerId: -1
+--- !u!58 &5654077670579004216
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4216120022214485151}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.0077614784}
+  serializedVersion: 2
+  m_Radius: 0.814477

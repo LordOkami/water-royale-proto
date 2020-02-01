@@ -163,6 +163,7 @@ MonoBehaviour:
   availableActionables:
   - {fileID: 4216120022214485151, guid: ed3dd823defbbe14e9980791ce601b09, type: 3}
   - {fileID: 730275135388454752, guid: 75f5eb29faf4b0b44bd613444c8a3a7b, type: 3}
+  currentActionables: []
   waterLevelPercentage: 50
 --- !u!4 &1033395977
 Transform:
