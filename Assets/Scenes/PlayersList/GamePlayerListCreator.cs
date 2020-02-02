@@ -40,13 +40,13 @@ public class GamePlayerListCreator : MonoBehaviour
     {
         if (itemDetails.ContainsKey(player.id))
         {
-            itemDetails[player.id].SetText(
-                player.username,
-                player.life,
-                player.gold,
-                player.income,
-                player.id == NetworkManager.my_target
-            );
+            // itemDetails[player.id].SetText(
+            //     player.username,
+            //     // player.life,
+            //     // player.gold,
+            //     // player.income,
+            //     player.id == NetworkManager.my_target
+            // );
         }
     }
 
@@ -59,7 +59,7 @@ public class GamePlayerListCreator : MonoBehaviour
         listItem.transform.SetParent(SpawnPoint, false);
         GamePlayerItemDetail itDetail = listItem.GetComponent<GamePlayerItemDetail>();
 
-        itDetail.SetText(player.username, player.life, player.gold, player.income, player.id == NetworkManager.my_target);
+        // itDetail.SetText(player.username, player.life, player.gold, player.income, player.id == NetworkManager.my_target);
         itemDetails.Add(player.id, itDetail);
     }
 }

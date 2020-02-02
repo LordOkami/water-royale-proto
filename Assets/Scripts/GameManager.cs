@@ -8,6 +8,28 @@ public class GameManager : MonoBehaviour
 {
     public GameObject camera;
 
+    public GameObject waitingUI;
+    public GameObject countdownUI;
+    // public TextMeshProUGUI countdownUIText;
+    public GameObject gameUI;
+    public string gameState = "waiting";
+
+    public GameObject playersList;
+    private static List<Player> otherPlayers;
+    private static bool updatePlayers;
+
+    private static Queue<Player> playerToUpdate = new Queue<Player>();
+
+    private static int countdown=5;
+    private static bool updateCountdown;
+
+
+    public GameObject loseUI;
+    public GameObject winUI;
+
+    private static bool updateLose;
+    private static bool updateWin;
+
     private static List<GameObject> players = new List<GameObject>();
 
     public static void RegisterPlayer(GameObject playerObject)
@@ -17,25 +39,97 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-
     }
 
     // Update is called once per frame
-    void Update()
+  void Update()
     {
+        if (updateCountdown)
+        {
+            updateCountdown = false;
+            if (countdown == 0)
+            {
+                // countdownUI.SetActive(false);
+                // gameUI.SetActive(true);
+            }
+            else
+            {
+                // countdownUIText.text = countdown + "";
+                if (gameState == "waiting")
+                {
+                    gameState = "counting";
+                    // waitingUI.SetActive(false);
+                    // countdownUI.SetActive(true);
+                }
+            }
+        }
+        if (updatePlayers)
+        {
+            updatePlayers = false;
+            // listCreator.UpdateList(otherPlayers);
+        }
+        // if (playerToUpdate.Count > 0)
+        // {
+        //     listCreator.UpdatePlayer(playerToUpdate.Dequeue());
+        // }
 
+        // if (updateLose)
+        // {
+        //     updateLose = false;
+        //     loseUI.SetActive(true);
+        // }
+        // if (updateWin)
+        // {
+        //     updateWin = false;
+        //     winUI.SetActive(true);
+        // }
     }
 
     public static void UpdateGame(Game _game)
     {
+        //game = _game;
+        //updateGame = true;
+        otherPlayers = new List<Player>();
+        foreach (Player p in _game.players)
+        {
+            if(p.id == NetworkManager.my_id)
+            {
+                // UpdateStats.UpdatePlayer(p);
+                NetworkManager.my_target = p.target;
+            }
+            else
+            {
+                otherPlayers.Add(p);
+            }
+        }
+        updatePlayers = true;
     }
 
     public static void UpdatePlayer(Player _player)
     {
+        if (_player.id == NetworkManager.my_id)
+        {
+            // UpdateStats.UpdatePlayer(_player);
+            NetworkManager.my_target = _player.target;
+            // if (_player.life == 0)
+            // {
+            //     updateLose = true;
+            // }
+            if (_player.target == NetworkManager.my_id && otherPlayers.Count > 1)
+            {
+                updateWin = true;
+            }
+        }
+        else
+        {
+            playerToUpdate.Enqueue(_player);
+        }
     }
 
     public static void UpdateCountdown(int count)
     {
+        countdown = count;
+        updateCountdown = true;
     }
 
 }

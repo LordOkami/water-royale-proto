@@ -56,4 +56,23 @@ public class GameChannel : MonoBehaviour
         Player p = m.payload.ToObject<Player>();
         GameManager.UpdatePlayer(p);
     }
+
+    public static void SendUpdate(int position_x, int position_y, int water_level)
+    {
+        channel.Push("update", new Dictionary<string, object> {
+          { "position_x", position_x },
+          { "position_y", position_y },
+          { "water_level", water_level }
+        });
+    }
+
+    public static void SendHittingValve(int type)
+    {
+        channel.Push("hitting_valve", new Dictionary<string, object> {{ "type", type }});
+    }
+
+    public static void SendHittingValve(int type)
+    {
+        channel.Push("release_valve", new Dictionary<string, object> {{ "type", type }});
+    }
 }
