@@ -109,11 +109,11 @@ public class OponentGameController : MonoBehaviour
           float pos_y = float.Parse(positions[1]);
           float rot_z = float.Parse(positions[2]);
 
-          // Transform torso = oponentRagdoll.transform.Find("torso");
           oponentRagdoll.transform.position = (
             gameContainer.transform.position + 
             new Vector3(pos_x, pos_y, 0) );
           oponentRagdoll.transform.rotation = new Quaternion(0,0,rot_z,1);
+          this.waterLevelPercentage = p.water_level;
         }
     }
 
@@ -137,6 +137,11 @@ public class OponentGameController : MonoBehaviour
 
         newValve.transform.localPosition = new Vector3(_spawn.pos_x, 0.5f , 0);
         this.currentActionables.Add(newValve);
+    }
+
+    public void setWaterLevel(float level)
+    {
+        this.waterLevelPercentage = level;
     }
 
 }

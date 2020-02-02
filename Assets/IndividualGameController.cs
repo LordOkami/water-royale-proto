@@ -18,7 +18,7 @@ public class IndividualGameController : MonoBehaviour
     private GameObject waterObject;
     private int cracksOpen = 0;
 
-    public float waterLevelPercentage = 50;
+    public static float waterLevelPercentage = 50;
     public float crackFillSpeed = 0.2f;
     
     //private int maxActionablesPerIteration = 3;
@@ -83,7 +83,7 @@ public class IndividualGameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        this.waterLevelPercentage += (this.crackFillSpeed * this.cracksOpen) / Application.targetFrameRate;
+        waterLevelPercentage += (this.crackFillSpeed * this.cracksOpen) / Application.targetFrameRate;
     }
 
     // Increase the number of calls to FixedUpdate.
