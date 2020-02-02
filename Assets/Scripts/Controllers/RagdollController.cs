@@ -56,7 +56,7 @@ public class RagdollController : MonoBehaviour
          + torso.transform.position.y + ";"
          + torso.transform.rotation.z
          ;
-        GameChannel.SendUpdate(transformation, 0);
+        GameChannel.SendUpdate(transformation, IndividualGameController.waterLevelPercentage);
     }
 
     public bool GetInteracting()
