@@ -45,7 +45,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waterdropPrefab: {fileID: 5434464919686466940, guid: 58a4f64c6ca1a9b4f874318dbdffc7b8,
     type: 3}
-  waterdropSpawnSpeed: 1
+  waterdropSpawnSpeed: 0.1
 --- !u!1 &5597886564071087866
 GameObject:
   m_ObjectHideFlags: 0

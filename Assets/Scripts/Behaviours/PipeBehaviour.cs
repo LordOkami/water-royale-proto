@@ -26,7 +26,10 @@ public class PipeBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        dropWater();
+        if (IndividualGameController.action == 0)
+        {
+            dropWater();
+        }
     }
 
     void dropWater()
