@@ -95,7 +95,6 @@ public class CrackBehaviour : MonoBehaviour
         waterdrop.transform.parent = this.transform;
         waterdrop.transform.position = this.transform.position;
 
-
         waterdrop.GetComponent<Rigidbody2D>().AddForce(new Vector3(UnityEngine.Random.Range(-10.0f, 10.0f), 0, 0));
 
         waterdrops.Add(waterdrop);
