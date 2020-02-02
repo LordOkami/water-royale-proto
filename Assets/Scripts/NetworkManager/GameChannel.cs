@@ -44,6 +44,7 @@ public class GameChannel : MonoBehaviour
     {
         int count = (int)m.payload["count"];
         GameManager.UpdateCountdown(count);
+        CountdownBehaviour.UpdateCountdown(count);
     }
 
     private static void UpdatedPlayer(Message m)
