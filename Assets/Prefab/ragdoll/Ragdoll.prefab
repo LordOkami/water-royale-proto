@@ -1170,7 +1170,7 @@ MonoBehaviour:
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: 2ab19dfa-ab33-48d9-8592-b467b3d2f8ee
+  m_DefaultActionMap: Ragdoll
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!114 &6095670207686201779
@@ -1360,6 +1360,7 @@ GameObject:
   - component: {fileID: 2532200709758801493}
   - component: {fileID: 7733766170231187924}
   - component: {fileID: 417047429375904498}
+  - component: {fileID: 6777732995465173701}
   m_Layer: 0
   m_Name: leftforearm
   m_TagString: Untagged
@@ -1546,6 +1547,25 @@ MonoBehaviour:
   m_DefaultActionMap: Ragdoll
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!232 &6777732995465173701
+DistanceJoint2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7733766170231187921}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_EnableCollision: 0
+  m_ConnectedRigidBody: {fileID: 0}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_AutoConfigureConnectedAnchor: 0
+  m_Anchor: {x: 0, y: 0}
+  m_ConnectedAnchor: {x: 0, y: 0}
+  m_AutoConfigureDistance: 1
+  m_Distance: 1.0826472
+  m_MaxDistanceOnly: 0
 --- !u!1 &7733766170803376105
 GameObject:
   m_ObjectHideFlags: 0
