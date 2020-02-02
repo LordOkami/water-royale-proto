@@ -34,7 +34,6 @@ public class IndividualGameController : MonoBehaviour
         // This will mean that FixedUpdate is called more often than Update.
         Application.targetFrameRate = 60;
         //availableActionables = Resources.LoadAll("Prefab/Valves", typeof(GameObject));
-
         
     }
     internal void executeActionable(Actionable actionable)
@@ -90,7 +89,7 @@ public class IndividualGameController : MonoBehaviour
         List<GameObject> elementsToBeDeleted = new List<GameObject>();
         currentActionables.ForEach(go =>
         {
-            go.transform.position = go.transform.position - new Vector3(0, pixelsPerFrame);
+            //go.transform.position = go.transform.position - new Vector3(0, pixelsPerFrame);
             if (go.transform.position.y < -((height / 2) + go.transform.lossyScale.y))
             {
                 elementsToBeDeleted.Add(go);
@@ -141,7 +140,11 @@ public class IndividualGameController : MonoBehaviour
         
         newValve.transform.parent = this.gameContainer.transform;
 
+        Rigidbody2D rb = newValve.GetComponent<Rigidbody2D>();
+        rb.velocity = new Vector3(0, -3, 0);
+
         newValve.transform.localPosition = new Vector3(_spawn.pos_x, height/2, 0);
+
         this.currentActionables.Add(newValve);
     }
 

@@ -5,7 +5,8 @@ using UnityEngine;
 public class WaterdropBehaviour : MonoBehaviour
 {
     public float pixelsPerFrame = 0.1f;
-    public int height = 10;
+    public GameObject splash;
+    public float height = 10;
 
     // Start is called before the first frame update
     void Start()
@@ -16,10 +17,13 @@ public class WaterdropBehaviour : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        this.transform.position = this.transform.position - new Vector3(0, pixelsPerFrame);
         if (this.transform.position.y < -((height / 2) + this.transform.lossyScale.y))
         {
+            GameObject sp = Instantiate(splash);
+            sp.transform.position = this.gameObject.transform.position;
+
             Destroy(this.gameObject);
+
         }
     }
 }
