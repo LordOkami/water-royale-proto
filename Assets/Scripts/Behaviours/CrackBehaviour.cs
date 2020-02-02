@@ -97,14 +97,14 @@ public class CrackBehaviour : MonoBehaviour
         waterdrops.Add(waterdrop);
     }
 
-    internal void Repair(Actionable actionable)
+    internal void Repair(Actionable actionable, IndividualGameController individualGameController)
     {
         timeRepairing += Time.deltaTime;
         Debug.Log(Time.deltaTime);
         spawnSparks();
         if (timeRepairing >= actionable.secondsForRepairing)
         {
-            IndividualGameController.repairCrack(this.gameObject);
+            individualGameController.repairCrack(this.gameObject);
             timeRepairing = 0;
         }
     }

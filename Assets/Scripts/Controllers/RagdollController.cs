@@ -51,13 +51,9 @@ public class RagdollController : MonoBehaviour
         leftHandRb.AddForce(leftAxis * force);
         rightHandRb.AddForce(leftAxis * force);
 
-        string transformation = "position: ("
-         + torso.transform.position.x +
-        ", "
-         + torso.transform.position.y +
-        ", "
-         + torso.transform.position.z +
-        ")";
+        string transformation =  torso.transform.position.x +
+        ","
+         + torso.transform.position.y;
         GameChannel.SendUpdate(transformation, 0);
     }
 

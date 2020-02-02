@@ -10,18 +10,18 @@ public class OponentGameController : MonoBehaviour
     public int width = 10;
     public int height = 10;
 
-    public static int maxCracksOpen = 10;
+    public int maxCracksOpen = 10;
 
-    public static GameObject[] availableActionables;
-    private static List<GameObject> currentActionables = new List<GameObject>();
+    public GameObject[] availableActionables;
+    private List<GameObject> currentActionables = new List<GameObject>();
     private GameObject waterObject;
-    private static int cracksOpen = 0;
+    private int cracksOpen = 0;
 
     public float waterLevelPercentage = 50;
     public float crackFillSpeed = 0.2f;
 
     public GameObject oponentRagdoll;
-    public Player oponentPlayer;
+    public bool attacker;
 
     //private int maxActionablesPerIteration = 3;
 
@@ -52,7 +52,7 @@ public class OponentGameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        waterLevelPercentage += (crackFillSpeed * cracksOpen) / Application.targetFrameRate;
+        this.waterLevelPercentage += (this.crackFillSpeed * this.cracksOpen) / Application.targetFrameRate;
     }
 
     // Increase the number of calls to FixedUpdate.
@@ -96,28 +96,45 @@ public class OponentGameController : MonoBehaviour
             Destroy(etbd);
             currentActionables.Remove(etbd);
         });
+        Player p;
+        if(attacker){
+          p = NetworkManager.my_attacker_player;
+        }
+        else {
+          p = NetworkManager.my_target_player;
+        }
+        if(p != null && p.transformation != null){
+          string [] positions = p.transformation.Split(',');
+          float pos_x = float.Parse(positions[0]);
+          float pos_y = float.Parse(positions[1]);
 
+
+          oponentRagdoll.transform.position = (
+            gameContainer.transform.position + 
+            new Vector3(pos_x, pos_y, 0) );
+        }
     }
 
-    public static void repairCrack(GameObject crack)
+    public void repairCrack(GameObject crack)
     {
-        cracksOpen--;
-        currentActionables.Remove(crack);
+        this.cracksOpen--;
+        this.currentActionables.Remove(crack);
         Destroy(crack);
     }
-    public static void spawnValve(ValveSpawn _spawn)
-    {
-        GameObject newValve = Instantiate(availableActionables[_spawn.type]);
 
-        if(newValve.CompareTag("waterdrop") && cracksOpen < maxCracksOpen)
+    public void spawnValve(ValveSpawn _spawn)
+    {
+        GameObject newValve = Instantiate(this.availableActionables[_spawn.type]);
+
+        if(newValve.CompareTag("waterdrop") && this.cracksOpen < this.maxCracksOpen)
         {
             cracksOpen++;
         }
         
-        //newValve.transform.parent = gameContainer.transform;
+        newValve.transform.parent = this.gameContainer.transform;
 
         newValve.transform.localPosition = new Vector3(_spawn.pos_x, 0.5f , 0);
-        currentActionables.Add(newValve);
+        this.currentActionables.Add(newValve);
     }
 
 }

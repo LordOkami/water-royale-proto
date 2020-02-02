@@ -9,32 +9,44 @@ public class PlayerLoaderController : MonoBehaviour
     private int xPos = -10;
 	private int sceneHeight = 10;
 
+  OponentGameController attackerGame, targetGame;
+  IndividualGameController myGame;
+
+  public static ValveSpawn addValveSpawn = null;
 	private void Start()
 	{
-		AddPlayer(NetworkManager.my_attacker_player);
-		AddPlayer();
-		AddPlayer(NetworkManager.my_target_player);
+		attackerGame = AddPlayer(true);
+		myGame = AddPlayer();
+		targetGame = AddPlayer(false);
 	}
 
 
-	private void Update()
+	private void FixedUpdate()
 	{
-	
+    if( addValveSpawn != null ){
+      attackerGame.spawnValve(addValveSpawn);
+      myGame.spawnValve(addValveSpawn);
+      targetGame.spawnValve(addValveSpawn);
+      addValveSpawn = null;
+    }
 	}
 
-    private void AddPlayer()
+    private IndividualGameController AddPlayer()
     {
         var game = Instantiate(gamePrefab);
+        IndividualGameController gg = game.GetComponent<IndividualGameController>();
         game.transform.position = new Vector3(xPos, 0f, 0f);
         xPos += sceneHeight;
+        return gg;
     }
 
-    private void AddPlayer(Player oponent)
+    private OponentGameController AddPlayer(bool attacker)
 	{
-
         var game = Instantiate(oponentPrefab);
-        game.GetComponent<OponentGameController>().oponentPlayer = oponent;
+        OponentGameController gg = game.GetComponent<OponentGameController>();
+        gg.attacker = attacker;
         game.transform.position = new Vector3(xPos, 0f, 0f);
         xPos += sceneHeight;
+        return gg;
     }
 }

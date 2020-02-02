@@ -54,10 +54,8 @@ public class GameChannel : MonoBehaviour
 
     private static void SpawnValve(Message m)
     {
-      Debug.Log("RECEIVED SPAWN");
-      Debug.Log(m);
         ValveSpawn s = m.payload.ToObject<ValveSpawn>();
-        IndividualGameController.spawnValve(s);
+        PlayerLoaderController.addValveSpawn = s;
     }
 
     public static void SendUpdate(string transformation, int water_level)

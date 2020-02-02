@@ -1,29 +1,32 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class IndividualGameController : MonoBehaviour
 {
 
+    public float valveSpawnEverySeconds = 1f;
     public float pixelsPerFrame = 0.01f;
     
     public int width = 10;
     public int height = 10;
 
-    public static int maxCracksOpen = 10;
+    public int maxCracksOpen = 10;
 
-    public static GameObject[] availableActionables;
-    private static List<GameObject> currentActionables = new List<GameObject>();
+    public GameObject[] availableActionables;
+    private List<GameObject> currentActionables = new List<GameObject>();
     private GameObject waterObject;
-    private static int cracksOpen = 0;
+    private int cracksOpen = 0;
 
-    public static float waterLevelPercentage = 50;
-    public static float crackFillSpeed = 0.2f;
+    public float waterLevelPercentage = 50;
+    public float crackFillSpeed = 0.2f;
     
     //private int maxActionablesPerIteration = 3;
 
-        private static GameObject gameContainer;
+    private GameObject gameContainer;
+
+
+        
 
     void Awake()
     {
@@ -34,6 +37,27 @@ public class IndividualGameController : MonoBehaviour
 
         
     }
+    internal void executeActionable(Actionable actionable)
+    {
+        switch (actionable.action)
+        {
+            case Actionable.ACTION.DRAIN:
+                waterLevelPercentage -= actionable.percentagePerSecond / Application.targetFrameRate;
+
+                break;
+            case Actionable.ACTION.FILL:
+                waterLevelPercentage += actionable.percentagePerSecond / Application.targetFrameRate;
+
+                break;
+            case Actionable.ACTION.REPAIR:
+                CrackBehaviour crack = actionable.gameObject.GetComponent<CrackBehaviour>();
+
+                crack.Repair(actionable, this);
+
+                break;
+        }
+    }
+
 
 
     // Start is called before the first frame update
@@ -54,34 +78,12 @@ public class IndividualGameController : MonoBehaviour
             Transform wallTransform = transform.Find("Walls").GetChild(i).transform;
             wallTransform.localScale = new Vector2(wallTransform.localScale.x, height);
         }
-
-    }
-
-    internal void executeActionable(Actionable actionable)
-    {
-        switch (actionable.action)
-        {
-            case Actionable.ACTION.DRAIN:
-                waterLevelPercentage -= actionable.percentagePerSecond / Application.targetFrameRate;
-
-                break;
-            case Actionable.ACTION.FILL:
-                waterLevelPercentage += actionable.percentagePerSecond / Application.targetFrameRate;
-
-                break;
-            case Actionable.ACTION.REPAIR:
-                CrackBehaviour crack = actionable.gameObject.GetComponent<CrackBehaviour>();
-
-                crack.Repair(actionable);
-                
-                break;
-        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        waterLevelPercentage += (crackFillSpeed * cracksOpen) / Application.targetFrameRate;
+        this.waterLevelPercentage += (this.crackFillSpeed * this.cracksOpen) / Application.targetFrameRate;
     }
 
     // Increase the number of calls to FixedUpdate.
@@ -125,30 +127,28 @@ public class IndividualGameController : MonoBehaviour
             Destroy(etbd);
             currentActionables.Remove(etbd);
         });
-
     }
 
-    public static void repairCrack(GameObject crack)
+    public void repairCrack(GameObject crack)
     {
-        cracksOpen--;
-        currentActionables.Remove(crack);
+        this.cracksOpen--;
+        this.currentActionables.Remove(crack);
         Destroy(crack);
     }
-    public static void spawnValve(ValveSpawn _spawn)
-    {
-        Debug.Log("SPAWNING VALVE");
-        Debug.Log(_spawn);
-        GameObject newValve = Instantiate(availableActionables[_spawn.type]);
 
-        if(newValve.CompareTag("waterdrop") && cracksOpen < maxCracksOpen)
+    public void spawnValve(ValveSpawn _spawn)
+    {
+        GameObject newValve = Instantiate(this.availableActionables[_spawn.type]);
+
+        if(newValve.CompareTag("waterdrop") && this.cracksOpen < this.maxCracksOpen)
         {
             cracksOpen++;
         }
         
-        newValve.transform.parent = gameContainer.transform;
+        newValve.transform.parent = this.gameContainer.transform;
 
         newValve.transform.localPosition = new Vector3(_spawn.pos_x, 0.5f , 0);
-        currentActionables.Add(newValve);
+        this.currentActionables.Add(newValve);
     }
 
 }
