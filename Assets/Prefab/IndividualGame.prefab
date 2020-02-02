@@ -51,7 +51,7 @@ MonoBehaviour:
   valveSpawnEverySeconds: 1
   pixelsPerFrame: 0.07
   width: 8
-  height: 16
+  height: 18
   maxCracksOpen: 10
   availableActionables:
   - {fileID: 4216120022214485151, guid: ed3dd823defbbe14e9980791ce601b09, type: 3}

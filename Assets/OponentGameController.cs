@@ -17,34 +17,25 @@ public class OponentGameController : MonoBehaviour
     private GameObject waterObject;
     private static int cracksOpen = 0;
 
-    public static float waterLevelPercentage = 50;
-    public static float crackFillSpeed = 0.2f;
+    public float waterLevelPercentage = 50;
+    public float crackFillSpeed = 0.2f;
+
+    private GameObject oponentRagdoll;
 
     //private int maxActionablesPerIteration = 3;
 
-    private static GameObject gameContainer;
-
-    void Awake()
-    {
-        // Uncommenting this will cause framerate to drop to 10 frames per second.
-        // This will mean that FixedUpdate is called more often than Update.
-        Application.targetFrameRate = 60;
-        //availableActionables = Resources.LoadAll("Prefab/Valves", typeof(GameObject));
-
-
-    }
+    private GameObject gameContainer;
 
 
     // Start is called before the first frame update
     void Start()
     {
-
         //Create the game container
         gameContainer = transform.Find("GameContainer").gameObject;
         gameContainer.transform.localScale = new Vector2(width, height);
 
         //Get the water
-        waterObject = transform.Find("Water").gameObject;
+        waterObject = transform.Find("OponentWater").gameObject;
 
 
         int wallCount = transform.Find("Walls").childCount;

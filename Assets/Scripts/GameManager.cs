@@ -96,10 +96,16 @@ public class GameManager : MonoBehaviour
             {
                 // UpdateStats.UpdatePlayer(p);
                 NetworkManager.my_target = p.target;
+                NetworkManager.my_player = p;
             }
             else
             {
                 otherPlayers.Add(p);
+            }
+
+            if(p.target == NetworkManager.my_id)
+            {
+                NetworkManager.my_attacker = p.id;
             }
         }
         updatePlayers = true;
@@ -123,6 +129,16 @@ public class GameManager : MonoBehaviour
         else
         {
             playerToUpdate.Enqueue(_player);
+        }
+
+        if(_player.id == NetworkManager.my_target)
+        {
+            NetworkManager.my_target_player = _player;
+        }
+
+        if (_player.id == NetworkManager.my_attacker)
+        {
+            NetworkManager.my_attacker_player = _player;
         }
     }
 

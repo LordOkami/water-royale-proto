@@ -11,9 +11,9 @@ public class PlayerLoaderController : MonoBehaviour
 
 	private void Start()
 	{
-		AddPlayer(false);
-		AddPlayer(true);
-		AddPlayer(false);
+		AddPlayer(NetworkManager.my_attacker_player);
+		AddPlayer();
+		AddPlayer(NetworkManager.my_target_player);
 	}
 
 
@@ -22,17 +22,19 @@ public class PlayerLoaderController : MonoBehaviour
 	
 	}
 
-	private void AddPlayer(bool isLocalPlayer)
+    private void AddPlayer()
+    {
+        var game = Instantiate(gamePrefab);
+        game.transform.position = new Vector3(xPos, 0f, 0f);
+        xPos += sceneHeight;
+    }
+
+    private void AddPlayer(Player oponent)
 	{
-        if(isLocalPlayer)
-        {
-            var game = Instantiate(gamePrefab);
-            game.transform.position = new Vector3(xPos, 0f, 0f);
-        } else
-        {
-            var game = Instantiate(oponentPrefab);
-            game.transform.position = new Vector3(xPos, 0f, 0f);
-        }
+
+        var game = Instantiate(oponentPrefab);
+        //game.GetComponent<OponentGameController>().oponent = oponent;
+        game.transform.position = new Vector3(xPos, 0f, 0f);
         xPos += sceneHeight;
     }
 }

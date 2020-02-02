@@ -9,7 +9,8 @@ public class NetworkManager : MonoBehaviour
     public static string my_id;
     public static string my_username;
     public static string game_id;
-    public static string my_target;
+    public static string my_target, my_attacker;
+    public static Player my_player, my_target_player, my_attacker_player;
 
 
     private void Awake()
