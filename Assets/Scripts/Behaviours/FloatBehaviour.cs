@@ -1,12 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+
 
 public class FloatBehaviour : MonoBehaviour
 {
     public float factor = 100;
     public float factorGrabbing = 15;
     public float maxVelocity = 10;
+    public float speedSplash = -5;
+    public GameObject particle;
     // Start is called before the first frame update
     void Start()
     {
@@ -37,6 +41,31 @@ public class FloatBehaviour : MonoBehaviour
                 if (rb.velocity.y > maxVelocity) rb.velocity = new Vector2(rb.velocity.x, maxVelocity);
             }
            
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D hit)
+    {
+        Splash(hit);
+
+    }
+
+    private void OnTriggerExit2D(Collider2D hit)
+    {
+        Splash(hit);
+
+    }
+
+    void Splash(Collider2D hit)
+    {
+        if (hit.attachedRigidbody && hit.gameObject.tag == "Player")
+        {
+            float speed = hit.transform.GetComponent<Rigidbody2D>().velocity.y;
+            if (Math.Abs(speed) > speedSplash)
+            {
+                GameObject splash = Instantiate(particle);
+                splash.transform.position = hit.transform.position;
+            }
         }
     }
 

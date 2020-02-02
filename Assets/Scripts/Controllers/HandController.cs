@@ -8,7 +8,7 @@ public class HandController : MonoBehaviour
 
     private RagdollController ragdollController;
     IndividualGameController individualGameController;
-
+    public float Velocity = 4.0f; 
     private DistanceJoint2D joint;
     // Start is called before the first frame update
     void Start()
@@ -43,7 +43,6 @@ public class HandController : MonoBehaviour
         if (collider.gameObject.tag == "Valve" || collider.gameObject.tag == "waterdrop")
         {
             Debug.Log("DRAGGGG");
-            
             joint.connectedBody = collider.gameObject.GetComponent<Rigidbody2D>();
             joint.enabled = true;
             ragdollController.isGrabbing = true;
