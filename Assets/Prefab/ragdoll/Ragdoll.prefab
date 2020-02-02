@@ -147,6 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d65d9d38e7d3d4ccf931bf217770c206, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Velocity: 4
 --- !u!233 &3802565861512803022
 HingeJoint2D:
   m_ObjectHideFlags: 0
@@ -1550,6 +1551,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d65d9d38e7d3d4ccf931bf217770c206, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Velocity: 4
 --- !u!233 &7733766170003791126
 HingeJoint2D:
   m_ObjectHideFlags: 0

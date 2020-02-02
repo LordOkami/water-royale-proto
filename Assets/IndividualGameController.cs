@@ -140,7 +140,7 @@ public class IndividualGameController : MonoBehaviour
             cracksOpen++;
         }
         
-        newValve.transform.parent = this.gameContainer.transform;
+        newValve.transform.parent = this.gameContainer.transform.parent.transform;
 
         newValve.transform.localPosition = new Vector3(_spawn.pos_x, 0.5f , 0);
         this.currentActionables.Add(newValve);
