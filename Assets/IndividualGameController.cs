@@ -58,7 +58,6 @@ public class IndividualGameController : MonoBehaviour
 
         //Create the game container
         gameContainer = transform.Find("GameContainer").gameObject;
-        gameContainer.transform.localScale = new Vector3(width, height,1);
         
         //Get the water
         waterObject = transform.Find("Water").gameObject;
@@ -140,9 +139,9 @@ public class IndividualGameController : MonoBehaviour
             cracksOpen++;
         }
         
-        newValve.transform.parent = this.gameContainer.transform.parent.transform;
+        newValve.transform.parent = this.gameContainer.transform;
 
-        newValve.transform.localPosition = new Vector3(_spawn.pos_x, 0.5f , 0);
+        newValve.transform.localPosition = new Vector3(_spawn.pos_x, height/2, 0);
         this.currentActionables.Add(newValve);
     }
 
