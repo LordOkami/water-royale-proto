@@ -151,7 +151,7 @@ PrefabInstance:
     - target: {fileID: 2717576099898847027, guid: ea1890a069b0a5f439bb8ff2d19e93e1,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 2717576099898847027, guid: ea1890a069b0a5f439bb8ff2d19e93e1,
         type: 3}
@@ -310,37 +310,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1984498273}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &822247087
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 861858870}
-  m_Layer: 0
-  m_Name: Recovery GameObject (861858870)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &861858870
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 2626682530298832975, guid: 1d372a5794ac49d4ca6adf670d8f75bf,
-    type: 3}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 822247087}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &991896642 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2717576099898847027, guid: ea1890a069b0a5f439bb8ff2d19e93e1,
@@ -404,7 +373,7 @@ Transform:
   - {fileID: 1245364933}
   - {fileID: 1846637696}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1088686293 stripped
 Transform:
@@ -502,7 +471,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1245364932
 GameObject:
@@ -1284,7 +1253,7 @@ PrefabInstance:
     - target: {fileID: 4849397909899278590, guid: 59da796b1be8f644f9ae969fad917205,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4849397909899278590, guid: 59da796b1be8f644f9ae969fad917205,
         type: 3}
