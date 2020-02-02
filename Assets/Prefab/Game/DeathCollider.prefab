@@ -121,3 +121,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c981220a32efa9b4f838bb13d953047e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathScreenPrefab: {fileID: 1315000441733410486, guid: c71f62e4eb3aa9642996bb3c152e77b4,
+    type: 3}
