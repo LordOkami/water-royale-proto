@@ -16,11 +16,11 @@ public class BallController : MonoBehaviour
     private Rigidbody2D rigidBody;
     float horizontalMove;
 
-    private void OnEnable()
-    {
-        GameManager.RegisterPlayer(this.gameObject);
-        transform.parent = GameObject.Find("IndividualGame").transform;
-    }
+    // private void OnEnable()
+    // {
+    //     GameManager.RegisterPlayer(this.gameObject);
+    //     transform.parent = GameObject.Find("IndividualGame").transform;
+    // }
 
     private void OnMove(InputValue value)
     {
@@ -80,7 +80,7 @@ public class BallController : MonoBehaviour
                     }
                     break;
             }
-            transform.position = valve.position;
+            // transform.position = valve.position;
         }
     }
 

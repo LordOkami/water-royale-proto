@@ -11,6 +11,8 @@ public class RagdollController : MonoBehaviour
     public GameObject leftHand;
     public GameObject rightHand;
 
+    public GameObject torso;
+
     public bool interacting = false;
     private Transform valve;
 
@@ -25,7 +27,6 @@ public class RagdollController : MonoBehaviour
         Debug.Log("ON ENABLE");
         transform.parent = GameObject.Find("IndividualGame").transform;
     }
-
     private void OnMove(InputValue value)
     {
         leftAxis = value.Get<Vector2>();
@@ -52,6 +53,14 @@ public class RagdollController : MonoBehaviour
         leftHandRb.AddForce(leftAxis * force);
         rightHandRb.AddForce(leftAxis * force);
 
+        string transformation = "position: ("
+         + torso.transform.position.x +
+        ", "
+         + torso.transform.position.y +
+        ", "
+         + torso.transform.position.z +
+        ")";
+        GameChannel.SendUpdate(transformation, 0);
     }
 
     public bool GetInteracting()

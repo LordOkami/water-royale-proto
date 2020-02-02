@@ -1298,7 +1298,7 @@ MonoBehaviour:
       m_Calls: []
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
+  m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Ragdoll
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
@@ -1317,6 +1317,7 @@ MonoBehaviour:
   force: 100
   leftHand: {fileID: 7733766170231187921}
   rightHand: {fileID: 7733766170003791123}
+  torso: {fileID: 7733766169104155431}
   interacting: 0
 --- !u!1 &7733766170206580590
 GameObject:

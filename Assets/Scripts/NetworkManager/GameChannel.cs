@@ -57,11 +57,10 @@ public class GameChannel : MonoBehaviour
         GameManager.UpdatePlayer(p);
     }
 
-    public static void SendUpdate(int position_x, int position_y, int water_level)
+    public static void SendUpdate(string transformation, int water_level)
     {
         channel.Push("update", new Dictionary<string, object> {
-          { "position_x", position_x },
-          { "position_y", position_y },
+          { "transformation", transformation },
           { "water_level", water_level }
         });
     }
