@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 1332697712937891165}
   - component: {fileID: 5986884990100918659}
   m_Layer: 0
-  m_Name: rightHand (1)
+  m_Name: leftHand
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -147,6 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d65d9d38e7d3d4ccf931bf217770c206, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Velocity: 4
 --- !u!233 &3802565861512803022
 HingeJoint2D:
   m_ObjectHideFlags: 0
@@ -516,6 +517,7 @@ GameObject:
   - component: {fileID: 7733766169104155428}
   - component: {fileID: 7733766169104155429}
   - component: {fileID: 7733766169104155419}
+  - component: {fileID: 9111015715198920507}
   m_Layer: 0
   m_Name: torso
   m_TagString: Player
@@ -634,6 +636,32 @@ BoxCollider2D:
   m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 1.18, y: 1.35}
+  m_EdgeRadius: 0
+--- !u!61 &9111015715198920507
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7733766169104155431}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.019774526, y: -0.17797017}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.18, y: 1.35}
+    newSize: {x: 1.18, y: 1.35}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.6677706, y: 3.973414}
   m_EdgeRadius: 0
 --- !u!1 &7733766169107449570
 GameObject:
@@ -1550,6 +1578,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d65d9d38e7d3d4ccf931bf217770c206, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Velocity: 4
 --- !u!233 &7733766170003791126
 HingeJoint2D:
   m_ObjectHideFlags: 0
@@ -1635,7 +1664,6 @@ GameObject:
   - component: {fileID: 7733766170156486007}
   - component: {fileID: 5293740262996696942}
   - component: {fileID: 6095670207686201779}
-  - component: {fileID: 445554408991440180}
   m_Layer: 0
   m_Name: Ragdoll
   m_TagString: Untagged
@@ -1717,32 +1745,6 @@ MonoBehaviour:
   torso: {fileID: 7733766169104155431}
   interacting: 0
   isGrabbing: 0
---- !u!61 &445554408991440180
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7733766170156486000}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.045778215, y: 0.25432467}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 2.2512765, y: 3.9298186}
-  m_EdgeRadius: 0
 --- !u!1 &7733766170206580590
 GameObject:
   m_ObjectHideFlags: 0
