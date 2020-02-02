@@ -133,6 +133,107 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": true
                 }
             ]
+        },
+        {
+            ""name"": ""Ragdoll"",
+            ""id"": ""2ab19dfa-ab33-48d9-8592-b467b3d2f8ee"",
+            ""actions"": [
+                {
+                    ""name"": ""move"",
+                    ""type"": ""Value"",
+                    ""id"": ""dc186ea5-859c-437a-86dc-dbc3e6fcbaaa"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""interact"",
+                    ""type"": ""Value"",
+                    ""id"": ""b1d2d948-e9bb-4ac9-bb1a-d5b4b78b3cf7"",
+                    ""expectedControlType"": ""Analog"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""fdf4a4b3-f418-42de-a14a-cffca1cd9545"",
+                    ""path"": ""<DualShockGamepad>/leftStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""7867d76c-290d-4f6e-8fce-638db31536b5"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""move"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""f7e7e48b-dc03-490d-b89d-bf7a89ff7290"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""7657cad0-c80f-4ef3-8c1d-f5b25d03d2bb"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""ed08eb1b-2b50-49e6-a7a3-ecf5ea4ee38f"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""2469ef1f-8ca3-4dd6-8caf-404ed93373f5"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""67dc62f3-18cc-47b1-aaa6-80ec19a9d09f"",
+                    ""path"": ""<DualShockGamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -203,6 +304,10 @@ public class @Controls : IInputActionCollection, IDisposable
         m_Ball_spawn = m_Ball.FindAction("spawn", throwIfNotFound: true);
         m_Ball_move = m_Ball.FindAction("move", throwIfNotFound: true);
         m_Ball_interact = m_Ball.FindAction("interact", throwIfNotFound: true);
+        // Ragdoll
+        m_Ragdoll = asset.FindActionMap("Ragdoll", throwIfNotFound: true);
+        m_Ragdoll_move = m_Ragdoll.FindAction("move", throwIfNotFound: true);
+        m_Ragdoll_interact = m_Ragdoll.FindAction("interact", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -297,6 +402,47 @@ public class @Controls : IInputActionCollection, IDisposable
         }
     }
     public BallActions @Ball => new BallActions(this);
+
+    // Ragdoll
+    private readonly InputActionMap m_Ragdoll;
+    private IRagdollActions m_RagdollActionsCallbackInterface;
+    private readonly InputAction m_Ragdoll_move;
+    private readonly InputAction m_Ragdoll_interact;
+    public struct RagdollActions
+    {
+        private @Controls m_Wrapper;
+        public RagdollActions(@Controls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @move => m_Wrapper.m_Ragdoll_move;
+        public InputAction @interact => m_Wrapper.m_Ragdoll_interact;
+        public InputActionMap Get() { return m_Wrapper.m_Ragdoll; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(RagdollActions set) { return set.Get(); }
+        public void SetCallbacks(IRagdollActions instance)
+        {
+            if (m_Wrapper.m_RagdollActionsCallbackInterface != null)
+            {
+                @move.started -= m_Wrapper.m_RagdollActionsCallbackInterface.OnMove;
+                @move.performed -= m_Wrapper.m_RagdollActionsCallbackInterface.OnMove;
+                @move.canceled -= m_Wrapper.m_RagdollActionsCallbackInterface.OnMove;
+                @interact.started -= m_Wrapper.m_RagdollActionsCallbackInterface.OnInteract;
+                @interact.performed -= m_Wrapper.m_RagdollActionsCallbackInterface.OnInteract;
+                @interact.canceled -= m_Wrapper.m_RagdollActionsCallbackInterface.OnInteract;
+            }
+            m_Wrapper.m_RagdollActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @move.started += instance.OnMove;
+                @move.performed += instance.OnMove;
+                @move.canceled += instance.OnMove;
+                @interact.started += instance.OnInteract;
+                @interact.performed += instance.OnInteract;
+                @interact.canceled += instance.OnInteract;
+            }
+        }
+    }
+    public RagdollActions @Ragdoll => new RagdollActions(this);
     private int m_KeyboardMouseSchemeIndex = -1;
     public InputControlScheme KeyboardMouseScheme
     {
@@ -345,6 +491,11 @@ public class @Controls : IInputActionCollection, IDisposable
     public interface IBallActions
     {
         void OnSpawn(InputAction.CallbackContext context);
+        void OnMove(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
+    }
+    public interface IRagdollActions
+    {
         void OnMove(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
     }
