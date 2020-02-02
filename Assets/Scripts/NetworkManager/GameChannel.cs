@@ -58,7 +58,7 @@ public class GameChannel : MonoBehaviour
         PlayerLoaderController.addValveSpawn = s;
     }
 
-    public static void SendUpdate(string transformation, int water_level)
+    public static void SendUpdate(string transformation, float water_level)
     {
         channel.Push("update", new Dictionary<string, object> {
           { "transformation", transformation },
