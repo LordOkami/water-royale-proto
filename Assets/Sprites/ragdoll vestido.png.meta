@@ -4,34 +4,64 @@ TextureImporter:
   internalIDToNameTable:
   - first:
       213: 2284112964335210043
-    second: ragdoll vestido_0
+    second: head
   - first:
       213: -3599918491653096094
-    second: ragdoll vestido_1
+    second: leftforearm
   - first:
       213: 1207867093531141681
-    second: ragdoll vestido_2
+    second: leftbicep
   - first:
       213: -1098620815694310580
-    second: ragdoll vestido_3
+    second: torso
   - first:
       213: 171023841319212898
-    second: ragdoll vestido_4
+    second: rightbicep
   - first:
       213: 5063556540467040040
-    second: ragdoll vestido_5
+    second: rightforearm
   - first:
       213: 2332173992574517797
-    second: ragdoll vestido_6
+    second: lefthight
   - first:
       213: -671367833558632528
-    second: ragdoll vestido_7
+    second: righthight
   - first:
       213: -8819107695396867176
-    second: ragdoll vestido_8
+    second: leftcalf
   - first:
       213: -4812734113104945789
-    second: ragdoll vestido_9
+    second: rightcalf
+  - first:
+      213: 7210317042186130183
+    second: head
+  - first:
+      213: -2322560904666019879
+    second: leftforearm
+  - first:
+      213: 6146038243611371626
+    second: leftbicep
+  - first:
+      213: -1804315011927040285
+    second: torso
+  - first:
+      213: -1572599949949215488
+    second: rightbicep
+  - first:
+      213: 1944848515223822177
+    second: rightforearm
+  - first:
+      213: -6478641504770516806
+    second: lefthight
+  - first:
+      213: -4419123737350826915
+    second: righthight
+  - first:
+      213: 6123723892100208280
+    second: leftcalf
+  - first:
+      213: 2596621715461097811
+    second: rightcalf
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -116,7 +146,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ragdoll vestido_0
+      name: head
       rect:
         serializedVersion: 2
         x: 282
@@ -124,41 +154,41 @@ TextureImporter:
         width: 95
         height: 95
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b3e801aa3acc2bf10800000000000000
-      internalID: 2284112964335210043
+      spriteID: 7031371e521301460800000000000000
+      internalID: 7210317042186130183
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ragdoll vestido_1
+      name: leftforearm
       rect:
         serializedVersion: 2
-        x: 85
-        y: 361
-        width: 63
-        height: 33
+        x: 57
+        y: 350
+        width: 91
+        height: 51
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 26d38ac74358a0ec0800000000000000
-      internalID: -3599918491653096094
+      spriteID: 9d70c24a92b94cfd0800000000000000
+      internalID: -2322560904666019879
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ragdoll vestido_2
+      name: leftbicep
       rect:
         serializedVersion: 2
         x: 159
@@ -166,20 +196,20 @@ TextureImporter:
         width: 101
         height: 31
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 136aec5d8b433c010800000000000000
-      internalID: 1207867093531141681
+      spriteID: a68eb6e283d1b4550800000000000000
+      internalID: 6146038243611371626
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ragdoll vestido_3
+      name: torso
       rect:
         serializedVersion: 2
         x: 271
@@ -187,20 +217,20 @@ TextureImporter:
         width: 118
         height: 135
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c43d0b9503ae0c0f0800000000000000
-      internalID: -1098620815694310580
+      spriteID: 3ee1f2b6e09c5f6e0800000000000000
+      internalID: -1804315011927040285
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ragdoll vestido_4
+      name: rightbicep
       rect:
         serializedVersion: 2
         x: 403
@@ -208,41 +238,41 @@ TextureImporter:
         width: 101
         height: 31
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 26754fd07499f5200800000000000000
-      internalID: 171023841319212898
+      spriteID: 00dda717da00d2ae0800000000000000
+      internalID: -1572599949949215488
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ragdoll vestido_5
+      name: rightforearm
       rect:
         serializedVersion: 2
         x: 515
-        y: 362
-        width: 63
-        height: 33
+        y: 350
+        width: 91
+        height: 51
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 82fc4ae78dd554640800000000000000
-      internalID: 5063556540467040040
+      spriteID: 16f9cdb9b6d7dfa10800000000000000
+      internalID: 1944848515223822177
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ragdoll vestido_6
+      name: lefthight
       rect:
         serializedVersion: 2
         x: 281
@@ -250,20 +280,20 @@ TextureImporter:
         width: 31
         height: 101
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5220fcdc3eb8d5020800000000000000
-      internalID: 2332173992574517797
+      spriteID: ab81d0170ed3716a0800000000000000
+      internalID: -6478641504770516806
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ragdoll vestido_7
+      name: righthight
       rect:
         serializedVersion: 2
         x: 354
@@ -271,20 +301,20 @@ TextureImporter:
         width: 31
         height: 101
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0b73d1f2382dea6f0800000000000000
-      internalID: -671367833558632528
+      spriteID: d5415b8df5e1ca2c0800000000000000
+      internalID: -4419123737350826915
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ragdoll vestido_8
+      name: leftcalf
       rect:
         serializedVersion: 2
         x: 281
@@ -292,20 +322,20 @@ TextureImporter:
         width: 30
         height: 50
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 893b4f3d64c3c9580800000000000000
-      internalID: -8819107695396867176
+      spriteID: 896943b5f66dbf450800000000000000
+      internalID: 6123723892100208280
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ragdoll vestido_9
+      name: rightcalf
       rect:
         serializedVersion: 2
         x: 351
@@ -313,14 +343,14 @@ TextureImporter:
         width: 34
         height: 46
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 38d99f5b2dbb53db0800000000000000
-      internalID: -4812734113104945789
+      spriteID: 359cf1651bd090420800000000000000
+      internalID: 2596621715461097811
       vertices: []
       indices: 
       edges: []
