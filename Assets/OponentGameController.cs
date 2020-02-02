@@ -109,11 +109,11 @@ public class OponentGameController : MonoBehaviour
           float pos_y = float.Parse(positions[1]);
           float rot_z = float.Parse(positions[2]);
 
-          GameObject torse = oponentRagdoll.Find("torso");
-          torso.transform.position = (
+          // Transform torso = oponentRagdoll.transform.Find("torso");
+          oponentRagdoll.transform.position = (
             gameContainer.transform.position + 
             new Vector3(pos_x, pos_y, 0) );
-          torso.rotation = new Vector3(0, 0, rot_z);
+          oponentRagdoll.transform.rotation = new Quaternion(0,0,rot_z,1);
         }
     }
 
