@@ -214,7 +214,7 @@ public class @Controls : IInputActionCollection, IDisposable
                 {
                     ""name"": ""right"",
                     ""id"": ""2469ef1f-8ca3-4dd6-8caf-404ed93373f5"",
-                    ""path"": ""<Keyboard>/f"",
+                    ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
@@ -229,6 +229,17 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
+                    ""action"": ""interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3f077747-5f8a-42f1-9b88-778864eab8b9"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
                     ""action"": ""interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false

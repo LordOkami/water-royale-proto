@@ -1,5 +1,26 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!50 &3536455320861116039
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4591408607315053426}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!114 &-114899293766073261
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23,6 +44,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 216580590174344015, guid: f0e132b7bfc1e77469f063625f7fe587,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: -0.09647203
+      objectReference: {fileID: 0}
+    - target: {fileID: 216580590174344015, guid: f0e132b7bfc1e77469f063625f7fe587,
+        type: 3}
+      propertyPath: m_Radius
+      value: 11.869159
+      objectReference: {fileID: 0}
+    - target: {fileID: 216580590174344015, guid: f0e132b7bfc1e77469f063625f7fe587,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: 0.054057706
+      objectReference: {fileID: 0}
     - target: {fileID: 1467632649329107973, guid: f0e132b7bfc1e77469f063625f7fe587,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -41,7 +77,7 @@ PrefabInstance:
     - target: {fileID: 1467632649329107973, guid: f0e132b7bfc1e77469f063625f7fe587,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.58961934
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 1467632649329107973, guid: f0e132b7bfc1e77469f063625f7fe587,
         type: 3}
@@ -56,7 +92,7 @@ PrefabInstance:
     - target: {fileID: 1467632649329107973, guid: f0e132b7bfc1e77469f063625f7fe587,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.80768126
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 1467632649329107973, guid: f0e132b7bfc1e77469f063625f7fe587,
         type: 3}
@@ -66,7 +102,7 @@ PrefabInstance:
     - target: {fileID: 1467632649329107973, guid: f0e132b7bfc1e77469f063625f7fe587,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 72.26
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 1467632649329107973, guid: f0e132b7bfc1e77469f063625f7fe587,
         type: 3}
@@ -87,6 +123,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: DrainLever3d
+      objectReference: {fileID: 0}
+    - target: {fileID: 2451451087313442326, guid: f0e132b7bfc1e77469f063625f7fe587,
+        type: 3}
+      propertyPath: m_TagString
+      value: Valve
       objectReference: {fileID: 0}
     - target: {fileID: 3167876517695923058, guid: f0e132b7bfc1e77469f063625f7fe587,
         type: 3}
