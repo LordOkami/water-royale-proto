@@ -6,5 +6,6 @@
 
     public string transformation { get; set; }
     public float water_level { get; set; }
-    public float water_rate { get; set; }
+    public int water_rate { get; set; }
+    public int crack_count { get; set; }
 }
