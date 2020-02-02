@@ -11,6 +11,9 @@ public class FloatBehaviour : MonoBehaviour
     public float maxVelocity = 10;
     public float speedSplash = -5;
     public GameObject particle;
+    public AudioSource audioSource;
+
+    public SimpleAudioEvent audioSplash;
     // Start is called before the first frame update
     void Start()
     {
