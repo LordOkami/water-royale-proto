@@ -4,17 +4,16 @@ using UnityEngine;
 
 public class PlayerLoaderController : MonoBehaviour
 {
-	
-	private int xPos = 0;
+    public GameObject gamePrefab;
+    public GameObject oponentPrefab;
+    private int xPos = -10;
 	private int sceneHeight = 10;
 
 	private void Start()
 	{
-		
-		AddPlayer("Single");
-		AddPlayer("Single");
-		AddPlayer("Single");
-		AddPlayer("Single");
+		AddPlayer(false);
+		AddPlayer(true);
+		AddPlayer(false);
 	}
 
 
@@ -23,12 +22,17 @@ public class PlayerLoaderController : MonoBehaviour
 	
 	}
 
-	private void AddPlayer(string sceneName)
+	private void AddPlayer(bool isLocalPlayer)
 	{
-		xPos += sceneHeight;
-
-		var playerLoader = new GameObject("PlayerLoader").AddComponent<PlayerLoader>();
-		playerLoader.transform.position = new Vector3(xPos, 0f,0f );
-		playerLoader.Load(sceneName);
-	}
+        if(isLocalPlayer)
+        {
+            var game = Instantiate(gamePrefab);
+            game.transform.position = new Vector3(xPos, 0f, 0f);
+        } else
+        {
+            var game = Instantiate(oponentPrefab);
+            game.transform.position = new Vector3(xPos, 0f, 0f);
+        }
+        xPos += sceneHeight;
+    }
 }
