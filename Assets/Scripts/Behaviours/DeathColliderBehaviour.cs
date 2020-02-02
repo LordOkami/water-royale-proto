@@ -8,6 +8,9 @@ public class DeathColliderBehaviour : MonoBehaviour
 
     private bool deathScreenShown = false;
 
+    public AudioSource audioSource;
+    public SimpleAudioEvent simpleAudioEvent;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +32,7 @@ public class DeathColliderBehaviour : MonoBehaviour
             Destroy(collision.gameObject);
             GameObject deathScreen = Instantiate(deathScreenPrefab);
             deathScreen.transform.position = new Vector2(0, 0);
+            simpleAudioEvent.Play(audioSource);
         }
     }
 }
