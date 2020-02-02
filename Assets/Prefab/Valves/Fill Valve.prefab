@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8061713516776688099}
   m_Layer: 0
   m_Name: Fill Valve
-  m_TagString: Untagged
+  m_TagString: Valve
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -97,6 +97,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   action: 1
   percentagePerSecond: 5
+  secondsForRepairing: 2
   playerId: -1
 --- !u!58 &8061713516776688099
 CircleCollider2D:

@@ -71,7 +71,7 @@ public class GameChannel : MonoBehaviour
         channel.Push("hitting_valve", new Dictionary<string, object> {{ "type", type }});
     }
 
-    public static void SendHittingValve(int type)
+    public static void SendReleaseValve(int type)
     {
         channel.Push("release_valve", new Dictionary<string, object> {{ "type", type }});
     }

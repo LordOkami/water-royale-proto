@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FloatBehaviour : MonoBehaviour
 {
-    float factor = 100;
+    float factor = 67;
 
     public float maxVelocity = 10;
     // Start is called before the first frame update
@@ -24,9 +24,8 @@ public class FloatBehaviour : MonoBehaviour
         if (hit.attachedRigidbody)
         {
 
-            if (hit.transform.position.y < transform.position.y + (transform.localScale.y / 2))
+            if (hit.transform.position.y + (hit.transform.localScale.y / 2) < transform.position.y + (transform.localScale.y / 2))
             {
-                float distance = transform.position.y + (transform.localScale.y/2) - hit.transform.position.y;
                 Rigidbody2D rb = hit.GetComponent<Rigidbody2D>();
                 rb.AddForce(Vector3.up * rb.mass * factor);
 
