@@ -16,6 +16,7 @@ public class GameChannel : MonoBehaviour
         channel.On("updated_game", UpdatedGame);
         channel.On("updated_countdown", UpdatedCountdown);
         channel.On("updated_player", UpdatedPlayer);
+        channel.On("spawn_valve", SpawnValve);
         
 
         print("Joining game channel");
@@ -35,26 +36,28 @@ public class GameChannel : MonoBehaviour
 
     private static void UpdatedGame(Message m)
     {
-        print("Received: updated_game");
-
         Game g = m.payload.ToObject<Game>();
         GameManager.UpdateGame(g);
     }
 
     private static void UpdatedCountdown(Message m)
     {
-        print("Received: updated_countdown");
-
         int count = (int)m.payload["count"];
         GameManager.UpdateCountdown(count);
     }
 
     private static void UpdatedPlayer(Message m)
     {
-        print("Received: updated_player");
-
         Player p = m.payload.ToObject<Player>();
         GameManager.UpdatePlayer(p);
+    }
+
+    private static void SpawnValve(Message m)
+    {
+      Debug.Log("RECEIVED SPAWN");
+      Debug.Log(m);
+        ValveSpawn s = m.payload.ToObject<ValveSpawn>();
+        IndividualGameController.spawnValve(s);
     }
 
     public static void SendUpdate(string transformation, int water_level)
