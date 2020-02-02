@@ -18,7 +18,6 @@ public class FloatBehaviour : MonoBehaviour
     void Start()
     {
 
-
     }
 
     // Update is called once per frame
@@ -64,11 +63,20 @@ public class FloatBehaviour : MonoBehaviour
         if (hit.attachedRigidbody && hit.gameObject.tag == "Player")
         {
             float speed = hit.transform.GetComponent<Rigidbody2D>().velocity.y;
-            if (Math.Abs(speed) > speedSplash)
+            if (Math.Abs(speed) > Math.Abs(speedSplash))
             {
                 GameObject splash = Instantiate(particle);
                 splash.transform.position = hit.transform.position;
             }
+            if (Math.Abs(speed) > Math.Abs(speedSplash))
+            {
+                if (hit.transform.name == "torso")
+                {
+                    audioSplash.Play(audioSource);
+                }
+                
+            }
+
         }
     }
 
