@@ -91,9 +91,10 @@ GameObject:
   - component: {fileID: 4216120022214485148}
   - component: {fileID: 8397977325198445361}
   - component: {fileID: 5654077670579004216}
+  - component: {fileID: 5476242081070961122}
   m_Layer: 0
   m_Name: Drain Valve
-  m_TagString: Untagged
+  m_TagString: Valve
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -177,6 +178,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   action: 0
   percentagePerSecond: 5
+  secondsForRepairing: 2
   playerId: -1
 --- !u!58 &5654077670579004216
 CircleCollider2D:
@@ -194,3 +196,24 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.0077614784}
   serializedVersion: 2
   m_Radius: 0.814477
+--- !u!50 &5476242081070961122
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4216120022214485151}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1000
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 5

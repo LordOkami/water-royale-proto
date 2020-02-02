@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -78,6 +79,27 @@ public class IndividualGameController : MonoBehaviour
 
     }
 
+    internal void executeActionable(Actionable actionable)
+    {
+        switch (actionable.action)
+        {
+            case Actionable.ACTION.DRAIN:
+                this.waterLevelPercentage -= actionable.percentagePerSecond / Application.targetFrameRate;
+
+                break;
+            case Actionable.ACTION.FILL:
+                this.waterLevelPercentage += actionable.percentagePerSecond / Application.targetFrameRate;
+
+                break;
+            case Actionable.ACTION.REPAIR:
+                CrackBehaviour crack = actionable.gameObject.GetComponent<CrackBehaviour>();
+
+                crack.Repair(actionable, this);
+                
+                break;
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -144,7 +166,7 @@ public class IndividualGameController : MonoBehaviour
         while (true)
         {
 
-            GameObject newValve = Instantiate(availableActionables[Random.Range(0, availableActionables.Length)]);
+            GameObject newValve = Instantiate(availableActionables[UnityEngine.Random.Range(0, availableActionables.Length)]);
             if(newValve.CompareTag("waterdrop") && cracksOpen < this.maxCracksOpen)
             {
                 this.cracksOpen++;
@@ -156,7 +178,7 @@ public class IndividualGameController : MonoBehaviour
             float valveHeight = newValve.transform.localScale.y;
 
             //float randomX = Random.Range(-0.5f + valveWidth, 0.5f - valveWidth);
-            float randomX = Random.Range(-0.5f + valveWidth, 0.5f - valveWidth);
+            float randomX = UnityEngine.Random.Range(-0.5f + valveWidth, 0.5f - valveWidth);
 
             
             newValve.transform.localPosition = new Vector3(randomX, 0.5f , 0);

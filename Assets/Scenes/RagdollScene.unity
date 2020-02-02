@@ -128,6 +128,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1033395977}
     m_Modifications:
+    - target: {fileID: 2717576099898847024, guid: ea1890a069b0a5f439bb8ff2d19e93e1,
+        type: 3}
+      propertyPath: factorGrabbing
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 2717576099898847026, guid: ea1890a069b0a5f439bb8ff2d19e93e1,
         type: 3}
       propertyPath: m_Name
