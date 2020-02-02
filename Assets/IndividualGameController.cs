@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -19,12 +18,15 @@ public class IndividualGameController : MonoBehaviour
     private GameObject waterObject;
     private int cracksOpen = 0;
 
-    public float waterLevelPercentage = 50;
+    public static float waterLevelPercentage = 50;
     public float crackFillSpeed = 0.2f;
     
     //private int maxActionablesPerIteration = 3;
 
-        private GameObject gameContainer;
+    private GameObject gameContainer;
+
+
+        
 
     void Awake()
     {
@@ -35,6 +37,27 @@ public class IndividualGameController : MonoBehaviour
 
         
     }
+    internal void executeActionable(Actionable actionable)
+    {
+        switch (actionable.action)
+        {
+            case Actionable.ACTION.DRAIN:
+                waterLevelPercentage -= actionable.percentagePerSecond / Application.targetFrameRate;
+
+                break;
+            case Actionable.ACTION.FILL:
+                waterLevelPercentage += actionable.percentagePerSecond / Application.targetFrameRate;
+
+                break;
+            case Actionable.ACTION.REPAIR:
+                CrackBehaviour crack = actionable.gameObject.GetComponent<CrackBehaviour>();
+
+                crack.Repair(actionable, this);
+
+                break;
+        }
+    }
+
 
 
     // Start is called before the first frame update
@@ -55,55 +78,12 @@ public class IndividualGameController : MonoBehaviour
             Transform wallTransform = transform.Find("Walls").GetChild(i).transform;
             wallTransform.localScale = new Vector2(wallTransform.localScale.x, height);
         }
-
-
-        /*  spriteRenderer.color = Color.red;
-        
-        spriteRenderer.sprite = Resources.Load<Sprite>("Sprites/Square") as Sprite;*/
-
-
-
-        /*GameObject playerCameraGameObject = new GameObject("Player Camera");
-        playerCameraGameObject.transform.parent = gameContainer.transform;
-        Camera camera = playerCameraGameObject.AddComponent<Camera>();
-        
-        camera.orthographic = true;
-        camera.orthographicSize = 9;
-        camera.farClipPlane = 10;
-        playerCameraGameObject.transform.position = new Vector3(0, 0, -10);
-        */
-        
-
-        StartCoroutine(CreateValve());
-
-
-    }
-
-    internal void executeActionable(Actionable actionable)
-    {
-        switch (actionable.action)
-        {
-            case Actionable.ACTION.DRAIN:
-                this.waterLevelPercentage -= actionable.percentagePerSecond / Application.targetFrameRate;
-
-                break;
-            case Actionable.ACTION.FILL:
-                this.waterLevelPercentage += actionable.percentagePerSecond / Application.targetFrameRate;
-
-                break;
-            case Actionable.ACTION.REPAIR:
-                CrackBehaviour crack = actionable.gameObject.GetComponent<CrackBehaviour>();
-
-                crack.Repair(actionable, this);
-                
-                break;
-        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        this.waterLevelPercentage += (this.crackFillSpeed * this.cracksOpen) / Application.targetFrameRate;
+        waterLevelPercentage += (this.crackFillSpeed * this.cracksOpen) / Application.targetFrameRate;
     }
 
     // Increase the number of calls to FixedUpdate.
@@ -147,7 +127,6 @@ public class IndividualGameController : MonoBehaviour
             Destroy(etbd);
             currentActionables.Remove(etbd);
         });
-
     }
 
     public void repairCrack(GameObject crack)
@@ -157,37 +136,19 @@ public class IndividualGameController : MonoBehaviour
         Destroy(crack);
     }
 
-#pragma warning disable IDE0051 // Quitar miembros privados no utilizados
-    IEnumerator CreateValve()
-#pragma warning restore IDE0051 // Quitar miembros privados no utilizados
+    public void spawnValve(ValveSpawn _spawn)
     {
-              
+        GameObject newValve = Instantiate(this.availableActionables[_spawn.type]);
 
-        while (true)
+        if(newValve.CompareTag("waterdrop") && this.cracksOpen < this.maxCracksOpen)
         {
-
-            GameObject newValve = Instantiate(availableActionables[UnityEngine.Random.Range(0, availableActionables.Length)]);
-            if(newValve.CompareTag("waterdrop") && cracksOpen < this.maxCracksOpen)
-            {
-                this.cracksOpen++;
-            }
-            
-            newValve.transform.parent = gameContainer.transform;
-
-            float valveWidth = newValve.transform.localScale.x;
-            float valveHeight = newValve.transform.localScale.y;
-
-            //float randomX = Random.Range(-0.5f + valveWidth, 0.5f - valveWidth);
-            float randomX = UnityEngine.Random.Range(-0.5f + valveWidth, 0.5f - valveWidth);
-
-            
-            newValve.transform.localPosition = new Vector3(randomX, 0.5f , 0);
-            
-            currentActionables.Add(newValve);
-
-            yield return new WaitForSeconds(valveSpawnEverySeconds);
+            cracksOpen++;
         }
-    }
+        
+        newValve.transform.parent = this.gameContainer.transform;
 
+        newValve.transform.localPosition = new Vector3(_spawn.pos_x, 0.5f , 0);
+        this.currentActionables.Add(newValve);
+    }
 
 }

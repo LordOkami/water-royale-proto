@@ -8,6 +8,7 @@ TagManager:
   - waterdrop
   - Valve
   - Water
+  - Game
   layers:
   - Default
   - TransparentFX

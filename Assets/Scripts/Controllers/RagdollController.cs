@@ -10,6 +10,7 @@ public class RagdollController : MonoBehaviour
 
     public GameObject leftHand;
     public GameObject rightHand;
+    public GameObject torso;
 
     public bool interacting = false;
     private Transform valve;
@@ -23,21 +24,18 @@ public class RagdollController : MonoBehaviour
 
     private void OnEnable()
     {
-        Debug.Log("ON ENABLE");
-        transform.parent = GameObject.Find("IndividualGame").transform;
+        transform.parent = GameObject.FindGameObjectWithTag("Game").transform;
     }
 
     private void OnMove(InputValue value)
     {
         leftAxis = value.Get<Vector2>();
-
     }
 
 
     private void OnInteract(InputValue value)
     {
         interacting = value.isPressed;
-        Debug.Log(interacting);
     }
 
     void Start()
@@ -53,6 +51,12 @@ public class RagdollController : MonoBehaviour
         leftHandRb.AddForce(leftAxis * force);
         rightHandRb.AddForce(leftAxis * force);
 
+        string transformation =  torso.transform.position.x +
+        ";"
+         + torso.transform.position.y + ";"
+         + torso.transform.rotation.z
+         ;
+        GameChannel.SendUpdate(transformation, IndividualGameController.waterLevelPercentage);
     }
 
     public bool GetInteracting()
