@@ -117,6 +117,7 @@ public class GameManager : MonoBehaviour
         {
             // UpdateStats.UpdatePlayer(_player);
             NetworkManager.my_target = _player.target;
+            NetworkManager.my_player = _player;
             // if (_player.life == 0)
             // {
             //     updateLose = true;

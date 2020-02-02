@@ -41,14 +41,6 @@ public class IndividualGameController : MonoBehaviour
     {
         switch (actionable.action)
         {
-            case Actionable.ACTION.DRAIN:
-                waterLevelPercentage -= actionable.percentagePerSecond / Application.targetFrameRate;
-
-                break;
-            case Actionable.ACTION.FILL:
-                waterLevelPercentage += actionable.percentagePerSecond / Application.targetFrameRate;
-
-                break;
             case Actionable.ACTION.REPAIR:
                 CrackBehaviour crack = actionable.gameObject.GetComponent<CrackBehaviour>();
 
@@ -83,7 +75,10 @@ public class IndividualGameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        waterLevelPercentage += (this.crackFillSpeed * this.cracksOpen) / Application.targetFrameRate;
+        waterLevelPercentage += (
+          (this.crackFillSpeed * NetworkManager.my_player.crack_count) + 
+          NetworkManager.my_player.water_rate
+        ) / Application.targetFrameRate;
     }
 
     // Increase the number of calls to FixedUpdate.
