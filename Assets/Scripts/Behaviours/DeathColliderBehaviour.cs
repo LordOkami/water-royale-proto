@@ -16,8 +16,12 @@ public class DeathColliderBehaviour : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("DEATH!!!!");
+        if (collision.gameObject.name == "torso" || collision.gameObject.name == "rightHand" || collision.gameObject.name == "leftHand")
+        {
+            Destroy(collision.gameObject);
+            
+        }
     }
 }
