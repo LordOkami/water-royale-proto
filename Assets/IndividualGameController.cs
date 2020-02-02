@@ -42,7 +42,7 @@ public class IndividualGameController : MonoBehaviour
 
         //Create the game container
         gameContainer = transform.Find("GameContainer").gameObject;
-        gameContainer.transform.localScale = new Vector2(width, height);
+        gameContainer.transform.localScale = new Vector3(width, height,1);
         
         //Get the water
         waterObject = transform.Find("Water").gameObject;
