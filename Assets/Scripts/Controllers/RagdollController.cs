@@ -22,6 +22,8 @@ public class RagdollController : MonoBehaviour
     public bool isGrabbing = false;
     Vector2 leftAxis;
 
+    AudioSource audioSource;
+    SimpleAudioEvent chirrido;
     private void OnEnable()
     {
         transform.parent = GameObject.FindGameObjectWithTag("Game").transform;

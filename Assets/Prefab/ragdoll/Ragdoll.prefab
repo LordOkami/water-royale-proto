@@ -1087,7 +1087,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 3
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -1739,7 +1739,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5e3f766eb1264346b4727e9caee52ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 100
+  force: 50
   leftHand: {fileID: 1750437936543501797}
   rightHand: {fileID: 7733766170003791123}
   torso: {fileID: 7733766169104155431}
@@ -1868,7 +1868,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 3
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
