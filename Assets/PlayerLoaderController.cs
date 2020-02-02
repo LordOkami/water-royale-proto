@@ -33,7 +33,7 @@ public class PlayerLoaderController : MonoBehaviour
 	{
 
         var game = Instantiate(oponentPrefab);
-        //game.GetComponent<OponentGameController>().oponent = oponent;
+        game.GetComponent<OponentGameController>().oponentPlayer = oponent;
         game.transform.position = new Vector3(xPos, 0f, 0f);
         xPos += sceneHeight;
     }

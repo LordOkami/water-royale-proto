@@ -48,17 +48,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8613a0aa36254d40935b1e2e16351a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  valveSpawnEverySeconds: 1
   pixelsPerFrame: 0.07
   width: 8
   height: 18
-  maxCracksOpen: 10
-  availableActionables:
-  - {fileID: 4216120022214485151, guid: ed3dd823defbbe14e9980791ce601b09, type: 3}
-  - {fileID: 730275135388454752, guid: 75f5eb29faf4b0b44bd613444c8a3a7b, type: 3}
-  - {fileID: 1709515306350182421, guid: 66ad111c13cf5744fa4729399d568d79, type: 3}
   waterLevelPercentage: 50
   crackFillSpeed: 0.2
+  oponentRagdoll: {fileID: 8613052921518631019}
 --- !u!1 &7011416749773467634
 GameObject:
   m_ObjectHideFlags: 0
@@ -532,6 +527,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 525504f0634170d4c808e721b33907e9, type: 3}
+--- !u!1 &8613052921518631019 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6897989959479501148, guid: 525504f0634170d4c808e721b33907e9,
+    type: 3}
+  m_PrefabInstance: {fileID: 2899509665253460279}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8613052921518631020 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6897989959479501147, guid: 525504f0634170d4c808e721b33907e9,

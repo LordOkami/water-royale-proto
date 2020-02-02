@@ -24,21 +24,18 @@ public class RagdollController : MonoBehaviour
 
     private void OnEnable()
     {
-        Debug.Log("ON ENABLE");
-        transform.parent = GameObject.Find("IndividualGame").transform;
+        transform.parent = GameObject.FindGameObjectWithTag("Game").transform;
     }
 
     private void OnMove(InputValue value)
     {
         leftAxis = value.Get<Vector2>();
-
     }
 
 
     private void OnInteract(InputValue value)
     {
         interacting = value.isPressed;
-        Debug.Log(interacting);
     }
 
     void Start()

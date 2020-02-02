@@ -20,7 +20,8 @@ public class OponentGameController : MonoBehaviour
     public float waterLevelPercentage = 50;
     public float crackFillSpeed = 0.2f;
 
-    private GameObject oponentRagdoll;
+    public GameObject oponentRagdoll;
+    public Player oponentPlayer;
 
     //private int maxActionablesPerIteration = 3;
 
@@ -113,7 +114,7 @@ public class OponentGameController : MonoBehaviour
             cracksOpen++;
         }
         
-        newValve.transform.parent = gameContainer.transform;
+        //newValve.transform.parent = gameContainer.transform;
 
         newValve.transform.localPosition = new Vector3(_spawn.pos_x, 0.5f , 0);
         currentActionables.Add(newValve);
