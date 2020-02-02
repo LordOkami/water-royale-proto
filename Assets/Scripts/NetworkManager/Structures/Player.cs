@@ -8,4 +8,5 @@
     public float water_level { get; set; }
     public int water_rate { get; set; }
     public int crack_count { get; set; }
+    public int action { get; set; }
 }

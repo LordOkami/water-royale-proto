@@ -62,7 +62,8 @@ public class GameChannel : MonoBehaviour
     {
         channel.Push("update", new Dictionary<string, object> {
           { "transformation", transformation },
-          { "water_level", water_level }
+          { "water_level", water_level },
+          { "action", IndividualGameController.action }
         });
     }
 

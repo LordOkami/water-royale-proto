@@ -25,6 +25,8 @@ public class IndividualGameController : MonoBehaviour
 
     private GameObject gameContainer;
 
+    public static int action = -1;
+
 
         
 
@@ -41,11 +43,25 @@ public class IndividualGameController : MonoBehaviour
     {
         switch (actionable.action)
         {
+            case Actionable.ACTION.DRAIN:
+                action = 0;
+
+                break;
+            case Actionable.ACTION.FILL:
+                action = 1;
+
+                break;
             case Actionable.ACTION.REPAIR:
+                action = 2;
                 CrackBehaviour crack = actionable.gameObject.GetComponent<CrackBehaviour>();
 
                 crack.Repair(actionable, this);
 
+                break;
+            
+            case Actionable.ACTION.NOTHING:
+            Debug.Log("DEFAULTING");
+                action = 0;
                 break;
         }
     }
