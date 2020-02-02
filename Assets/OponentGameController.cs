@@ -104,14 +104,16 @@ public class OponentGameController : MonoBehaviour
           p = NetworkManager.my_target_player;
         }
         if(p != null && p.transformation != null){
-          string [] positions = p.transformation.Split(',');
+          string [] positions = p.transformation.Split(';');
           float pos_x = float.Parse(positions[0]);
           float pos_y = float.Parse(positions[1]);
+          float rot_z = float.Parse(positions[2]);
 
-
-          oponentRagdoll.transform.position = (
+          GameObject torse = oponentRagdoll.Find("torso");
+          torso.transform.position = (
             gameContainer.transform.position + 
             new Vector3(pos_x, pos_y, 0) );
+          torso.rotation = new Vector3(0, 0, rot_z);
         }
     }
 
