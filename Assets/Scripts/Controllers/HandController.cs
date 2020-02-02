@@ -48,4 +48,9 @@ public class HandController : MonoBehaviour
             ragdollController.isGrabbing = true;
         }
     }
+        void OnTriggerExit2D(Collider2D collider)
+    {
+        IndividualGameController.action = -1;
+        Debug.Log("defaulting");
+    }
 }
